@@ -107,8 +107,8 @@ LMM info: area 'hello_RAM' uses 0 bytes in SRAM page 0
 LMM info: area 'response3_RAM' uses 0 bytes in SRAM page 0
 LMM info: area 'response2_RAM' uses 0 bytes in SRAM page 0
 LMM info: area 'response1_RAM' uses 0 bytes in SRAM page 0
-  ROM 78% full. 12514 bytes used (does not include absolute areas).
+  ROM 78% full. 12515 bytes used (does not include absolute areas).
   RAM 30% full. 231 bytes used (does not include stack usage).
 idata dump at output/Thesis_Revolute.idata
  
-Thesis_Revolute - 0 error(s) 0 warning(s) 13:16:06
+Thesis_Revolute - 0 error(s) 0 warning(s) 13:29:03

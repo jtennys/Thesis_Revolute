@@ -1,4 +1,4 @@
-  ROM 78% full. 12514 bytes used (does not include absolute areas).
+  ROM 78% full. 12515 bytes used (does not include absolute areas).
   RAM 30% full. 231 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
@@ -799,42 +799,42 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   204C   1226 =   4646. bytes (rel,con,rom)
+                            text   204C   1227 =   4647. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
        204C  _main
        204C  __text_start
-       2098  _sayHello
-       20FD  _configToggle
-       2307  _commandReady
-       26E9  _takeAction
-       291C  _configCleared
-       29BB  _pingResponse
-       2A5A  _unloadAllConfigs
-       2A76  _unloadConfig
-       2AFF  _assignedID
-       2B9E  _childListen
-       2BF6  _childResponse
-       2CDE  _servoFinder
-       2EAE  _servoInstruction
-       2F8C  _xmitWait
-       2FAB  _servoBootWait
-       2FFF  _servoConfigWait
-       305E  _TX_01234_TIMEOUT_ISR
-       3075  _HELLO_TIMEOUT_ISR
-       308C  _CHILD_1_TIMEOUT_ISR
-       30A3  _CHILD_2_TIMEOUT_ISR
-       30BA  _CHILD_3_TIMEOUT_ISR
-       30D1  _CHILD_4_TIMEOUT_ISR
-       30E8  _INIT_TIMEOUT_ISR
-       30FF  Dispatch_INTERRUPT_10
-       316B  Dispatch_INTERRUPT_11
-       3195  Dispatch_INTERRUPT_9
-       31EB  __divmod_16X16_16
-       3239  __i_div16_block_util
-       3280  __xidata_end
-       3272  __text_end
+       209B  _sayHello
+       2100  _configToggle
+       230A  _commandReady
+       26EC  _takeAction
+       291F  _configCleared
+       29BE  _pingResponse
+       2A5D  _unloadAllConfigs
+       2A79  _unloadConfig
+       2B02  _assignedID
+       2BA1  _childListen
+       2BF9  _childResponse
+       2CE1  _servoFinder
+       2EAF  _servoInstruction
+       2F8D  _xmitWait
+       2FAC  _servoBootWait
+       3000  _servoConfigWait
+       305F  _TX_01234_TIMEOUT_ISR
+       3076  _HELLO_TIMEOUT_ISR
+       308D  _CHILD_1_TIMEOUT_ISR
+       30A4  _CHILD_2_TIMEOUT_ISR
+       30BB  _CHILD_3_TIMEOUT_ISR
+       30D2  _CHILD_4_TIMEOUT_ISR
+       30E9  _INIT_TIMEOUT_ISR
+       3100  Dispatch_INTERRUPT_10
+       316C  Dispatch_INTERRUPT_11
+       3196  Dispatch_INTERRUPT_9
+       31EC  __divmod_16X16_16
+       323A  __i_div16_block_util
+       3281  __xidata_end
+       3273  __text_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------

@@ -165,6 +165,9 @@ void main()
 	
 	M8C_EnableIntMask(INT_MSK0,INT_MSK0_GPIO); // Activate GPIO ISR
 	
+	// We have to wait for the servo to power up and get ready for communications.
+	servoBootWait();
+	
 	// Find the servo that is inside of this module.
 	servoFinder();
 	
@@ -1074,9 +1077,6 @@ void servoFinder(void)
 	// Start with a servo ID of 255 (out of valid range).
 	SERVO_ID = SERVO_START;
 
-	// We have to wait for the servo to power up and get ready for communications.
-	servoBootWait();
-
 	// This for loop will loop SERVO_COMM_LOOPS number of times and ping the servo SERVO_COMM_ATTEMPTS
 	// number of times in each loop (unless stopped short due to early success).  If this fails for the
 	// first round of pings, a broadcast reset will be performed to reset the servo.  This is done
@@ -1204,17 +1204,6 @@ void servoFinder(void)
 		// Purposely break the module to show that we did not resolve the communication with our servo.
 		while(1) { }
 	}
-
-//	if(total_attempts <= SERVO_COMM_ATTEMPTS)
-//	{
-//		PRT2DR &= 0b11111110;
-//	}
-//	else
-//	{
-//		PRT2DR |= 0b00000001;
-//	}
-//	
-//	while(1) { }
 	
 	// Wait for the other controllers to find their servos.
 	servoConfigWait();
