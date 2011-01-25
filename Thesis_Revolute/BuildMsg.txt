@@ -1,0 +1,114 @@
+Starting MAKE...
+creating project.mk 
+lib/child_1.asm
+lib/child_1_timeout.asm
+lib/child_1_timeoutint.asm
+lib/child_1int.asm
+lib/child_1plus.asm
+lib/child_2.asm
+lib/child_2_timeout.asm
+lib/child_2_timeoutint.asm
+lib/child_2int.asm
+lib/child_2plus.asm
+lib/child_3.asm
+lib/child_3_timeout.asm
+lib/child_3_timeoutint.asm
+lib/child_3int.asm
+lib/child_3plus.asm
+lib/child_4.asm
+lib/child_4_timeout.asm
+lib/child_4_timeoutint.asm
+lib/child_4int.asm
+lib/child_4plus.asm
+lib/hello_1.asm
+lib/hello_1int.asm
+lib/hello_1plus.asm
+lib/hello_2.asm
+lib/hello_2int.asm
+lib/hello_2plus.asm
+lib/hello_3.asm
+lib/hello_3int.asm
+lib/hello_3plus.asm
+lib/hello_4.asm
+lib/hello_4int.asm
+lib/hello_4plus.asm
+lib/hello_timeout.asm
+lib/hello_timeoutint.asm
+lib/init_rx.asm
+lib/init_rxint.asm
+lib/init_rxplus.asm
+lib/init_timeout.asm
+lib/init_timeoutint.asm
+lib/psocconfig.asm
+lib/psocconfigtbl.asm
+lib/psocdynamic.asm
+lib/psocdynamicint.asm
+lib/rx8_2.asm
+lib/rx8_2int.asm
+lib/rx8_2plus.asm
+lib/servo_tx.asm
+lib/servo_txint.asm
+lib/servo_txplus.asm
+lib/tx_01234_timeout.asm
+lib/tx_01234_timeoutint.asm
+lib/tx_014.asm
+lib/tx_014int.asm
+lib/tx_014plus.asm
+lib/tx_23.asm
+lib/tx_23int.asm
+lib/tx_23plus.asm
+lib/wait_recv.asm
+lib/wait_recvint.asm
+lib/wait_recvplus.asm
+./boot.asm
+./main.c
+ 
+Linking..
+LMM info: area 'InterruptRAM' uses 24 bytes in SRAM page 0
+LMM info: area 'HELLO_4_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_3_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_3_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'INIT_RX_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'RX8_2_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'WAIT_RECV_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_1_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_4_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_2_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_1_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_2_RAM' item of 16 bytes allocated in SRAM page 0
+LMM info: area 'virtual_registers' uses 5 bytes in SRAM page 0
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_1_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_2_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_3_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'CHILD_4_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_1_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_2_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_3_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'HELLO_4_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'INIT_RX_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'RX8_2_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'WAIT_RECV_RAM' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'my_response_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'initial_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'response4_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'hello_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'response3_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'response2_RAM' uses 0 bytes in SRAM page 0
+LMM info: area 'response1_RAM' uses 0 bytes in SRAM page 0
+  ROM 78% full. 12514 bytes used (does not include absolute areas).
+  RAM 30% full. 231 bytes used (does not include stack usage).
+idata dump at output/Thesis_Revolute.idata
+ 
+Thesis_Revolute - 0 error(s) 0 warning(s) 13:16:06

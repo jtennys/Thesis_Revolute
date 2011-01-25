@@ -1,0 +1,163 @@
+# DO NOT DELETE
+./obj/boot.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8ssc.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\lib\GLOBAL~1.INC\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./obj/main.o :  ./lib/CHILD_1.h ./lib/CHILD_~1.H ./lib/CHILD_2.h\
+   ./lib/CHILD_~2.H ./lib/CHILD_3.h ./lib/CHILD_~3.H ./lib/CHILD_4.h\
+   ./lib/CHILD_~4.H ./lib/HELLO_1.h ./lib/HELLO_2.h ./lib/HELLO_3.h\
+   ./lib/HELLO_4.h ./lib/HELLO_~1.H ./lib/INIT_RX.h ./lib/INIT_T~1.H\
+   ./lib/PSoCAPI.h ./lib/RX8_2.h ./lib/SERVO_TX.h ./lib/TX_012~1.H\
+   ./lib/TX_014.h ./lib/TX_23.h ./lib/WAIT_R~1.H ./lib/PSOCDY~1.H\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.h
+./lib/obj/child_1.o :  ./lib/CHILD_1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_1_timeout.o :  ./lib/CHILD_~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_1_timeoutint.o :  ./lib/CHILD_~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_1int.o :  ./lib/CHILD_1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_1plus.o : 
+./lib/obj/child_2.o :  ./lib/CHILD_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_2_timeout.o :  ./lib/CHILD_~2.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_2_timeoutint.o :  ./lib/CHILD_~2.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_2int.o :  ./lib/CHILD_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_2plus.o : 
+./lib/obj/child_3.o :  ./lib/CHILD_3.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_3_timeout.o :  ./lib/CHILD_~3.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_3_timeoutint.o :  ./lib/CHILD_~3.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_3int.o :  ./lib/CHILD_3.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_3plus.o : 
+./lib/obj/child_4.o :  ./lib/CHILD_4.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_4_timeout.o :  ./lib/CHILD_~4.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_4_timeoutint.o :  ./lib/CHILD_~4.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_4int.o :  ./lib/CHILD_4.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/child_4plus.o : 
+./lib/obj/hello_1.o :  ./lib/HELLO_1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_1int.o :  ./lib/HELLO_1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_1plus.o : 
+./lib/obj/hello_2.o :  ./lib/HELLO_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_2int.o :  ./lib/HELLO_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_2plus.o : 
+./lib/obj/hello_3.o :  ./lib/HELLO_3.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_3int.o :  ./lib/HELLO_3.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_3plus.o : 
+./lib/obj/hello_4.o :  ./lib/HELLO_4.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_4int.o :  ./lib/HELLO_4.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_4plus.o : 
+./lib/obj/hello_timeout.o :  ./lib/HELLO_~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/hello_timeoutint.o :  ./lib/HELLO_~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/init_rx.o :  ./lib/INIT_RX.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/init_rxint.o :  ./lib/INIT_RX.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/init_rxplus.o : 
+./lib/obj/init_timeout.o :  ./lib/INIT_T~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/init_timeoutint.o :  ./lib/INIT_T~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/psocconfig.o :  ./lib/GLOBAL~1.INC ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/psocconfigtbl.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+./lib/obj/psocdynamic.o :  ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/psocdynamicint.o :  ./lib/PSOCDY~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+./lib/obj/rx8_2.o :  ./lib/RX8_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/rx8_2int.o :  ./lib/RX8_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/rx8_2plus.o : 
+./lib/obj/servo_tx.o :  ./lib/SERVO_TX.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/servo_txint.o :  ./lib/SERVO_TX.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/servo_txplus.o : 
+./lib/obj/tx_01234_timeout.o :  ./lib/TX_012~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_01234_timeoutint.o :  ./lib/TX_012~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_014.o :  ./lib/TX_014.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_014int.o :  ./lib/TX_014.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_014plus.o : 
+./lib/obj/tx_23.o :  ./lib/TX_23.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_23int.o :  ./lib/TX_23.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/tx_23plus.o : 
+./lib/obj/wait_recv.o :  ./lib/WAIT_R~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/wait_recvint.o :  ./lib/WAIT_R~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./lib/obj/wait_recvplus.o : 

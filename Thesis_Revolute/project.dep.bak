@@ -1,0 +1,13 @@
+# DO NOT DELETE
+./obj/boot.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8ssc.inc\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\lib\GLOBAL~1.INC\
+   C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\memory.inc
+./obj/main.o :  ./lib/CHILD_1.h ./lib/CHILD_~1.H ./lib/CHILD_2.h\
+   ./lib/CHILD_~2.H ./lib/CHILD_3.h ./lib/CHILD_~3.H ./lib/CHILD_4.h\
+   ./lib/CHILD_~4.H ./lib/HELLO_1.h ./lib/HELLO_2.h ./lib/HELLO_3.h\
+   ./lib/HELLO_4.h ./lib/HELLO_~1.H ./lib/INIT_RX.h ./lib/INIT_T~1.H\
+   ./lib/PSoCAPI.h ./lib/RX8_2.h ./lib/SERVO_TX.h ./lib/TX_012~1.H\
+   ./lib/TX_014.h ./lib/TX_23.h ./lib/WAIT_R~1.H ./lib/PSOCDY~1.H\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.h

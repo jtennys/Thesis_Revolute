@@ -1,0 +1,109 @@
+XH
+H 1 areas 13 global symbols
+M psocdynamic.asm
+S ACTIVE_CONFIG_STATUS Ref0000
+A text size 75 flags 0
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbline 27 0
+dbline 28 3
+dbline 29 5
+dbline 2A 8
+dbline 2B A
+dbline 2D C
+dbline 31 D
+dbline 32 10
+dbline 33 12
+dbline 34 15
+dbline 35 17
+dbline 37 19
+dbline 3B 1A
+dbline 3C 1D
+dbline 3D 1F
+dbline 3E 22
+dbline 3F 24
+dbline 41 26
+dbline 45 27
+dbline 46 2A
+dbline 47 2C
+dbline 48 2F
+dbline 49 31
+dbline 4B 33
+dbline 4F 34
+dbline 50 37
+dbline 51 39
+dbline 52 3C
+dbline 53 3E
+dbline 55 40
+dbline 59 41
+dbline 5A 44
+dbline 5B 46
+dbline 5C 49
+dbline 5D 4B
+dbline 5F 4D
+dbline 63 4E
+dbline 64 51
+dbline 65 53
+dbline 66 56
+dbline 67 58
+dbline 69 5A
+dbline 6D 5B
+dbline 6E 5E
+dbline 6F 60
+dbline 70 63
+dbline 71 65
+dbline 73 67
+dbline 77 68
+dbline 78 6B
+dbline 79 6D
+dbline 7A 70
+dbline 7B 72
+dbline 7D 74
+dbfile ./lib/PSoCDynamic.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocdynamic.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+S _Isresponse1Loaded Def0034
+S Isservo_transmitLoaded Def0068
+S _Isresponse2Loaded Def0041
+S _Isresponse3Loaded Def004E
+S _Isresponse4Loaded Def005B
+S _Ismy_responseLoaded Def0027
+S IshelloLoaded Def000D
+S _IsinitialLoaded Def001A
+S _IswaitingLoaded Def0000
+S _Isservo_transmitLoaded Def0068
+S _IshelloLoaded Def000D
+S Isresponse1Loaded Def0034
+S Isresponse2Loaded Def0041
+S Isresponse3Loaded Def004E
+S Isresponse4Loaded Def005B
+S Ismy_responseLoaded Def0027
+S IsinitialLoaded Def001A
+S IswaitingLoaded Def0000
+T 00 00 62 D0 00 00 50 00 47 00 00 01 A0 03 50 01
+R 00 00 00 00 4B 04 00 00 0B 09 00 00
+T 00 0C 7F 62 D0 00 00 50 00 47 00 00 02 A0 03 50
+R 00 00 00 00 4B 05 00 00 0B 0A 00 00
+T 00 18 01 7F 62 D0 00 00 50 00 47 00 00 04 A0 03
+R 00 00 00 00 4B 06 00 00 0B 0B 00 00
+T 00 24 50 01 7F 62 D0 00 00 50 00 47 00 00 08 A0
+R 00 00 00 00 4B 07 00 00 0B 0C 00 00
+T 00 30 03 50 01 7F 62 D0 00 00 50 00 47 00 00 10
+R 00 00 00 00 4B 08 00 00 0B 0D 00 00
+T 00 3C A0 03 50 01 7F 62 D0 00 00 50 00 47 00 00
+R 00 00 00 00 4B 09 00 00 0B 0E 00 00
+T 00 48 20 A0 03 50 01 7F 62 D0 00 00 50 00 47
+R 00 00 00 00 4B 0A 00 00
+T 00 54 00 00 40 A0 03 50 01 7F 62 D0 00 00 50 00
+R 00 00 00 00 0B 02 00 00 4B 0C 00 00
+T 00 60 47 00 00 80 A0 03 50 01 7F 62 D0 00 00 50
+R 00 00 00 00 0B 03 00 00 4B 0D 00 00
+T 00 6C 00 47 00 01 01 A0 03 50 01 7F
+R 00 00 00 00 0B 04 00 00

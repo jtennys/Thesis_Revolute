@@ -1,0 +1,28 @@
+XH
+H 3 areas 1 global symbols
+M child_3_timeoutint.asm
+A text size 0 flags 0
+dbfile lib/child_3_timeoutint.asm
+dbfunc 0 ? 0 I
+dbfile CHILD_3_TIMEOUT.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/CHILD_3_TIMEOUT.inc
+dbfunc 0 ? 0 I
+dbfile lib/child_3_timeoutint.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/child_3_timeoutint.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY60D2~1/m8c.inc
+dbfunc 0 ? 0 I
+A InterruptRAM size 0 flags 20
+A UserModules size 1 flags 0
+dbfile lib/child_3_timeoutint.asm
+dbfunc 0 ? 0 I
+dbline 4C 0
+S _CHILD_3_TIMEOUT_ISR Def0000
+T 00 00 7E
+R 00 00 00 02
