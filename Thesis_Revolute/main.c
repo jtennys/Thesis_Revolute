@@ -14,7 +14,6 @@
 #include "psocdynamic.h"	// Required for dynamically swapping configurations at run time.
 
 // These are declarations of all of the timer interrupts that are used for all configurations.
-#pragma interrupt_handler WAIT_NC_TIMEOUT_ISR
 #pragma interrupt_handler TX_01234_TIMEOUT_ISR
 #pragma interrupt_handler CHILD_1_TIMEOUT_ISR
 #pragma interrupt_handler CHILD_2_TIMEOUT_ISR

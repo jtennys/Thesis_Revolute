@@ -1050,7 +1050,6 @@ data = 0x0
 SSCParmBlk:0x00F7.0x00FF
 InterruptRAM = 0x0
 virtual_registers = 0xc8
-thesis_revolute_RAM
 waiting_RAM
 hello_RAM = 0xe7
 initial_RAM = 0xe7
