@@ -1,5 +1,5 @@
 // Author: Jason Tennyson
-// Date: 1-25-11
+// Date: 3-17-11
 // File: main.c
 //
 // This is the design for the revolute modules for Jason Tennyson's Thesis.
@@ -35,10 +35,13 @@
 #define		SERVO_COMM					(9)
 
 // These defines are used as comparisons to find what port the next module connected to.
-#define		PORT_A						('A')
-#define		PORT_B						('B')
-#define		PORT_C						('C')
-#define		PORT_D						('D')
+#define		PORT_1						('1')
+#define		PORT_2						('2')
+#define		PORT_3						('3')
+#define		PORT_4						('4')
+
+// Module Type
+#define		TYPE						(1)
 
 // These defines are used as transmission indicators for transmissions between PSoC controllers.
 #define		START_TRANSMIT				(252)	// Indicates the beginning of a transmission.
@@ -485,25 +488,25 @@ int commandReady(void)
 		// Check all of the ports for a start byte.  Only one port will produce one.
 		if(HELLO_1_cReadChar() == START_TRANSMIT)
 		{		
-			CHILD = PORT_A;
+			CHILD = PORT_1;
 			
 			return 1;
 		}
 		else if(HELLO_2_cReadChar() == START_TRANSMIT)
 		{		
-			CHILD = PORT_B;
+			CHILD = PORT_2;
 			
 			return 1;
 		}
 		else if(HELLO_3_cReadChar() == START_TRANSMIT)
 		{
-			CHILD = PORT_C;
+			CHILD = PORT_3;
 			
 			return 1;
 		}
 		else if(HELLO_4_cReadChar() == START_TRANSMIT)
 		{
-			CHILD = PORT_D;
+			CHILD = PORT_4;
 			
 			return 1;
 		}
@@ -874,6 +877,10 @@ void pingResponse(void)
 	TX_23_PutChar(MASTER_ID);		// Destination ID (master)
 	TX_014_PutChar(PING);			// This is a ping response
 	TX_23_PutChar(PING);			// This is a ping response
+	TX_014_PutChar(TYPE);			// This is the module type
+	TX_23_PutChar(TYPE);			// This is the module type
+	TX_014_PutChar(CHILD);			// This is the child-connected port
+	TX_23_PutChar(CHILD);			// This is the child-connected port
 	TX_014_PutChar(END_TRANSMIT);	// This is the end of this transmission
 	TX_23_PutChar(END_TRANSMIT);	// This is the end of this transmission
 	TX_014_PutChar(END_TRANSMIT);	// This is the end of this transmission
@@ -1005,19 +1012,19 @@ int childResponse(void)
 	int child_responded = 0;
 	
 	// Switch to the right port.
-	if(CHILD == PORT_A)
+	if(CHILD == PORT_1)
 	{
 		configToggle(RESPONSE_1);
 	}
-	else if(CHILD == PORT_B)
+	else if(CHILD == PORT_2)
 	{
 		configToggle(RESPONSE_2);
 	}
-	else if(CHILD == PORT_C)
+	else if(CHILD == PORT_3)
 	{
 		configToggle(RESPONSE_3);
 	}
-	else if(CHILD == PORT_D)
+	else if(CHILD == PORT_4)
 	{
 		configToggle(RESPONSE_4);
 	}
@@ -1032,19 +1039,19 @@ int childResponse(void)
 	}
 	
 	// Stop the right timer.
-	if(CHILD == PORT_A)
+	if(CHILD == PORT_1)
 	{
 		CHILD_1_TIMEOUT_Stop();
 	}
-	else if(CHILD == PORT_B)
+	else if(CHILD == PORT_2)
 	{
 		CHILD_2_TIMEOUT_Stop();
 	}
-	else if(CHILD == PORT_C)
+	else if(CHILD == PORT_3)
 	{
 		CHILD_3_TIMEOUT_Stop();
 	}
-	else if(CHILD == PORT_D)
+	else if(CHILD == PORT_4)
 	{
 		CHILD_4_TIMEOUT_Stop();
 	}
