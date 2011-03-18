@@ -59,8 +59,6 @@
 #define		ID_ASSIGNMENT				(201)	// Indicates an ID assignment from the master.
 #define		ID_ASSIGN_OK				(202)	// Indicates an ID assignment is complete.
 #define		PING						(203)	// Indicates a ping message to or from the master.
-#define		CLEAR_CONFIG				(204)	// Indicates that the master is asking for a config clear.
-#define		CONFIG_CLEARED				(205)	// Indicates that a module has cleared its own config.
 #define		MASTER_ID					(0)		// The master node's ID.
 #define		DEFAULT_ID					(251)	// The ID that all modules start with.
 #define		BROADCAST					(254)	// The broadcast ID for all controllers and servos.
@@ -1222,6 +1220,17 @@ void servoFinder(void)
 				servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, STATUS_RET_ADDRESS, STATUS_RET_LEVEL);
 			}
 		}
+		
+		if(status_return_level != STATUS_RET_LEVEL)
+		{
+			// Break this module on purpose because it won't function like we want it to anyway.
+			while(1) { }
+		}
+	}
+	else
+	{
+		// Purposely break the module since it was unable to assign an ID correctly.
+		while(1) { }
 	}
 	
 	// Wait for the other controllers to find their servos.

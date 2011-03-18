@@ -1,10 +1,10 @@
-flash 32C5 SRAM   FE:
+flash 32CE SRAM   FE:
  <size at next line>   0  0
   [size:] 2 bytes
-flash 32CA SRAM  1F0:
+flash 32D3 SRAM  1F0:
  00 5 bytes
-flash 32CE SRAM  1FF:
+flash 32D7 SRAM  1FF:
  00 7 bytes
-flash 32D2 SRAM  207:
+flash 32DB SRAM  207:
  <size at next line>   0
   [size:] 1 bytes

@@ -1,4 +1,4 @@
-  ROM 78% full. 12597 bytes used (does not include absolute areas).
+  ROM 78% full. 12606 bytes used (does not include absolute areas).
   RAM 67% full. 520 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
@@ -799,7 +799,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   204C   1279 =   4729. bytes (rel,con,rom)
+                            text   204C   1282 =   4738. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -816,24 +816,24 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        2BFC  _childListen
        2C54  _childResponse
        2D3C  _servoFinder
-       2F01  _servoInstruction
-       2FDF  _xmitWait
-       2FFE  _servoBootWait
-       3052  _servoConfigWait
-       30B1  _TX_01234_TIMEOUT_ISR
-       30C8  _HELLO_TIMEOUT_ISR
-       30DF  _CHILD_1_TIMEOUT_ISR
-       30F6  _CHILD_2_TIMEOUT_ISR
-       310D  _CHILD_3_TIMEOUT_ISR
-       3124  _CHILD_4_TIMEOUT_ISR
-       313B  _INIT_TIMEOUT_ISR
-       3152  Dispatch_INTERRUPT_10
-       31BE  Dispatch_INTERRUPT_11
-       31E8  Dispatch_INTERRUPT_9
-       323E  __divmod_16X16_16
-       328C  __i_div16_block_util
-       32C5  __text_end
-       32D8  __xidata_end
+       2F0A  _servoInstruction
+       2FE8  _xmitWait
+       3007  _servoBootWait
+       305B  _servoConfigWait
+       30BA  _TX_01234_TIMEOUT_ISR
+       30D1  _HELLO_TIMEOUT_ISR
+       30E8  _CHILD_1_TIMEOUT_ISR
+       30FF  _CHILD_2_TIMEOUT_ISR
+       3116  _CHILD_3_TIMEOUT_ISR
+       312D  _CHILD_4_TIMEOUT_ISR
+       3144  _INIT_TIMEOUT_ISR
+       315B  Dispatch_INTERRUPT_10
+       31C7  Dispatch_INTERRUPT_11
+       31F1  Dispatch_INTERRUPT_9
+       3247  __divmod_16X16_16
+       3295  __i_div16_block_util
+       32CE  __text_end
+       32E1  __xidata_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
