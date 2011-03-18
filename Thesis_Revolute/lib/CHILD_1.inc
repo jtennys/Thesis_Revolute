@@ -25,7 +25,7 @@ CHILD_1_INT_REG:          equ 0e1h
 CHILD_1_RXBUF_ENABLE:                       equ   1
 
 CHILD_1_RX_IGNORE_BELOW:                     equ  0h
-CHILD_1_RX_BUFFER_SIZE:                      equ  10h
+CHILD_1_RX_BUFFER_SIZE:                      equ  40h
 CHILD_1_CMD_TERM:                            equ  0h
 CHILD_1_DELIMITER:                           equ  0h
 

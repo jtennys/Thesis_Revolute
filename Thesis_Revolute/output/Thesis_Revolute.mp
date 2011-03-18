@@ -1,5 +1,5 @@
-  ROM 78% full. 12549 bytes used (does not include absolute areas).
-  RAM 30% full. 231 bytes used (does not include stack usage).
+  ROM 78% full. 12597 bytes used (does not include absolute areas).
+  RAM 67% full. 520 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -580,10 +580,10 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        1A44  CHILD_4_Start
        1A49  CHILD_4_Stop
        1A49  _CHILD_4_Stop
-       1A4D  _bCHILD_4_ReadRxData
+       1A4D  _CHILD_4_bReadRxData
        1A4D  CHILD_4_bReadRxData
        1A4D  bCHILD_4_ReadRxData
-       1A4D  _CHILD_4_bReadRxData
+       1A4D  _bCHILD_4_ReadRxData
        1A50  _CHILD_4_bReadRxStatus
        1A50  _bCHILD_4_ReadRxStatus
        1A50  CHILD_4_bReadRxStatus
@@ -714,10 +714,10 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        1DC2  _bCHILD_2_ReadRxStatus
        1DC2  CHILD_2_bReadRxStatus
        1DC2  bCHILD_2_ReadRxStatus
-       1DC5  _CHILD_2_cGetChar
        1DC5  CHILD_2_cGetChar
-       1DCD  CHILD_2_cReadChar
+       1DC5  _CHILD_2_cGetChar
        1DCD  _CHILD_2_cReadChar
+       1DCD  CHILD_2_cReadChar
        1DE4  _CHILD_2_iReadChar
        1DE4  CHILD_2_iReadChar
        1DFA  _CHILD_2_CmdReset
@@ -773,10 +773,10 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        1F78  _bCHILD_1_ReadRxData
        1F78  bCHILD_1_ReadRxData
        1F78  CHILD_1_bReadRxData
-       1F7B  _CHILD_1_bReadRxStatus
        1F7B  bCHILD_1_ReadRxStatus
-       1F7B  _bCHILD_1_ReadRxStatus
        1F7B  CHILD_1_bReadRxStatus
+       1F7B  _bCHILD_1_ReadRxStatus
+       1F7B  _CHILD_1_bReadRxStatus
        1F7E  CHILD_1_cGetChar
        1F7E  _CHILD_1_cGetChar
        1F86  CHILD_1_cReadChar
@@ -799,7 +799,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   204C   1249 =   4681. bytes (rel,con,rom)
+                            text   204C   1279 =   4729. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -808,33 +808,32 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        209B  _sayHello
        2100  _configToggle
        230A  _commandReady
-       26EC  _takeAction
-       291F  _configCleared
-       29BE  _pingResponse
-       2A7F  _unloadAllConfigs
-       2A9B  _unloadConfig
-       2B24  _assignedID
-       2BC3  _childListen
-       2C1B  _childResponse
-       2D03  _servoFinder
-       2ED1  _servoInstruction
-       2FAF  _xmitWait
-       2FCE  _servoBootWait
-       3022  _servoConfigWait
-       3081  _TX_01234_TIMEOUT_ISR
-       3098  _HELLO_TIMEOUT_ISR
-       30AF  _CHILD_1_TIMEOUT_ISR
-       30C6  _CHILD_2_TIMEOUT_ISR
-       30DD  _CHILD_3_TIMEOUT_ISR
-       30F4  _CHILD_4_TIMEOUT_ISR
-       310B  _INIT_TIMEOUT_ISR
-       3122  Dispatch_INTERRUPT_10
-       318E  Dispatch_INTERRUPT_11
-       31B8  Dispatch_INTERRUPT_9
-       320E  __divmod_16X16_16
-       325C  __i_div16_block_util
-       32A3  __xidata_end
-       3295  __text_end
+       2845  _takeAction
+       29F7  _pingResponse
+       2AB8  _unloadAllConfigs
+       2AD4  _unloadConfig
+       2B5D  _assignedID
+       2BFC  _childListen
+       2C54  _childResponse
+       2D3C  _servoFinder
+       2F01  _servoInstruction
+       2FDF  _xmitWait
+       2FFE  _servoBootWait
+       3052  _servoConfigWait
+       30B1  _TX_01234_TIMEOUT_ISR
+       30C8  _HELLO_TIMEOUT_ISR
+       30DF  _CHILD_1_TIMEOUT_ISR
+       30F6  _CHILD_2_TIMEOUT_ISR
+       310D  _CHILD_3_TIMEOUT_ISR
+       3124  _CHILD_4_TIMEOUT_ISR
+       313B  _INIT_TIMEOUT_ISR
+       3152  Dispatch_INTERRUPT_10
+       31BE  Dispatch_INTERRUPT_11
+       31E8  Dispatch_INTERRUPT_9
+       323E  __divmod_16X16_16
+       328C  __i_div16_block_util
+       32C5  __text_end
+       32D8  __xidata_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -902,39 +901,39 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     CHILD_1_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                     CHILD_1_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       00A8  _CHILD_1_aRxBuffer
-       00A8  CHILD_1_aRxBuffer
+       0180  _CHILD_1_aRxBuffer
+       0180  CHILD_1_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     CHILD_2_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                     CHILD_2_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0098  _CHILD_2_aRxBuffer
-       0098  CHILD_2_aRxBuffer
+       0140  _CHILD_2_aRxBuffer
+       0140  CHILD_2_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     CHILD_3_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                     CHILD_3_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0038  _CHILD_3_aRxBuffer
-       0038  CHILD_3_aRxBuffer
+       0058  _CHILD_3_aRxBuffer
+       0058  CHILD_3_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                     CHILD_4_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                     CHILD_4_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0088  _CHILD_4_aRxBuffer
-       0088  CHILD_4_aRxBuffer
+       0100  _CHILD_4_aRxBuffer
+       0100  CHILD_4_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -942,8 +941,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0078  _HELLO_1_aRxBuffer
-       0078  HELLO_1_aRxBuffer
+       01D0  _HELLO_1_aRxBuffer
+       01D0  HELLO_1_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -951,8 +950,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
        Addr  Global Symbol
       -----  --------------------------------
-       00B8  _HELLO_2_aRxBuffer
-       00B8  HELLO_2_aRxBuffer
+       01E0  _HELLO_2_aRxBuffer
+       01E0  HELLO_2_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -960,8 +959,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0028  _HELLO_3_aRxBuffer
-       0028  HELLO_3_aRxBuffer
+       00D8  _HELLO_3_aRxBuffer
+       00D8  HELLO_3_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -969,8 +968,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0018  _HELLO_4_aRxBuffer
-       0018  HELLO_4_aRxBuffer
+       00E8  _HELLO_4_aRxBuffer
+       00E8  HELLO_4_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -978,38 +977,39 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0048  INIT_RX_aRxBuffer
-       0048  _INIT_RX_aRxBuffer
+       01C0  INIT_RX_aRxBuffer
+       01C0  _INIT_RX_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                       RX8_2_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                       RX8_2_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0058  RX8_2_aRxBuffer
-       0058  _RX8_2_aRxBuffer
+       0018  RX8_2_aRxBuffer
+       0018  _RX8_2_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                   WAIT_RECV_RAM   0000   0011 =     17. bytes (rel,con,ram)
+                   WAIT_RECV_RAM   0000   0041 =     65. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       0068  WAIT_RECV_aRxBuffer
-       0068  _WAIT_RECV_aRxBuffer
+       0098  WAIT_RECV_aRxBuffer
+       0098  _WAIT_RECV_aRxBuffer
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-               virtual_registers   00C8   0005 =      5. bytes (rel,con,ram)
+               virtual_registers   00F8   0006 =      6. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
-       00C8  __rZ
-       00C9  __rY
-       00CA  __rX
-       00CB  __r1
-       00CC  __r0
+       00F8  __rZ
+       00F9  __rY
+       00FA  __rX
+       00FB  __r3
+       00FC  __r1
+       00FD  __r0
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -1018,18 +1018,18 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        Addr  Global Symbol
       -----  --------------------------------
        0000  __data_start
-       00CD  _CONFIGURED
-       00CF  _STATE
-       00D1  _TIMEOUT
-       00D3  _CHILD
-       00DE  _COMMAND_ERROR
-       00DF  _COMMAND_LENGTH
-       00E0  _COMMAND_PARAM
-       00E1  _COMMAND_TYPE
-       00E2  _COMMAND_DESTINATION
-       00E3  _COMMAND_SOURCE
-       00E4  _ID
-       00E6  _SERVO_ID
+       00FE  _CONFIGURED
+       01F0  _STATE
+       01F2  _TIMEOUT
+       01F4  _CHILD
+       01FF  _COMMAND_ERROR
+       0200  _COMMAND_LENGTH
+       0201  _COMMAND_PARAM
+       0202  _COMMAND_TYPE
+       0203  _COMMAND_DESTINATION
+       0204  _COMMAND_SOURCE
+       0205  _ID
+       0207  _SERVO_ID
 
 Files Linked      [ module(s) ]
 
@@ -1041,7 +1041,8 @@ Files Linked      [ module(s) ]
 [ hello_4.asm, hello_3int.asm, hello_3.asm, hello_2int.asm, hello_2.asm, hello_1int.asm, hello_1.asm ]
 [ child_4int.asm, child_4_timeout.asm, child_4.asm, child_3int.asm, child_3_timeout.asm, child_3.asm ]
 [ child_2int.asm, child_2_timeout.asm, child_2.asm, child_1int.asm, child_1_timeout.asm, child_1.asm ]
-[ rZ.asm, rY.asm, rX.asm, r1.asm, r0.asm, divmod_16x16_16_util.asm, i_div16_block_util.asm ]
+[ rZ.asm, rY.asm, rX.asm, r3.asm, r1.asm, r0.asm, divmod_16x16_16_util.asm, i_div16_block_util.asm ]
+
 
 User Base Address Definitions
 
@@ -1049,14 +1050,14 @@ lit = 0x190
 data = 0x0
 SSCParmBlk:0x00F7.0x00FF
 InterruptRAM = 0x0
-virtual_registers = 0xc8
+virtual_registers = 0xf8
 waiting_RAM
-hello_RAM = 0xe7
-initial_RAM = 0xe7
-my_response_RAM = 0xe7
-response1_RAM = 0xe7
-response2_RAM = 0xe7
-response3_RAM = 0xe7
-response4_RAM = 0xe7
+hello_RAM = 0x208
+initial_RAM = 0x208
+my_response_RAM = 0x208
+response1_RAM = 0x208
+response2_RAM = 0x208
+response3_RAM = 0x208
+response4_RAM = 0x208
 servo_transmit_RAM
 

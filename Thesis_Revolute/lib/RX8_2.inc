@@ -25,7 +25,7 @@ RX8_2_INT_REG:          equ 0e1h
 RX8_2_RXBUF_ENABLE:                         equ   1
 
 RX8_2_RX_IGNORE_BELOW:                       equ  0h
-RX8_2_RX_BUFFER_SIZE:                        equ  10h
+RX8_2_RX_BUFFER_SIZE:                        equ  40h
 RX8_2_CMD_TERM:                              equ  0h
 RX8_2_DELIMITER:                             equ  0h
 

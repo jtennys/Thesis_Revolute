@@ -1,7 +1,10 @@
-flash 3295 SRAM   CD:
+flash 32C5 SRAM   FE:
+ <size at next line>   0  0
+  [size:] 2 bytes
+flash 32CA SRAM  1F0:
+ 00 5 bytes
+flash 32CE SRAM  1FF:
  00 7 bytes
-flash 3299 SRAM   DE:
- 00 7 bytes
-flash 329D SRAM   E6:
+flash 32D2 SRAM  207:
  <size at next line>   0
   [size:] 1 bytes
