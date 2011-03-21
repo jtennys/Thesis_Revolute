@@ -1,5 +1,5 @@
 // Author: Jason Tennyson
-// Date: 3-18-11
+// Date: 3-21-11
 // File: main.c
 //
 // This is the design for the revolute modules for Jason Tennyson's Thesis.
@@ -97,13 +97,13 @@
 
 // This is the number of attempts we make to contact the servo per sweep of attempts before
 // writing to its EEPROM in an attempt to alter settings that keep us from communicating.
-#define		SERVO_COMM_ATTEMPTS			(10)
+#define		SERVO_COMM_ATTEMPTS			(5)
 // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
 // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
 // If we don't then do at least one more loop, the EEPROM write was done for no reason.
-#define		SERVO_COMM_LOOPS			(2)
+#define		SERVO_COMM_LOOPS			(4)
 // This is the number of timeout periods to wait through while the servo boots up (2 ms per period).
-#define		SERVO_BOOT_TIMEOUTS			(75)
+#define		SERVO_BOOT_TIMEOUTS			(100)
 
 // This function receives a mode identifier as a parameter and toggles the system configuration.
 void configToggle(int mode);
@@ -1224,13 +1224,39 @@ void servoFinder(void)
 		if(status_return_level != STATUS_RET_LEVEL)
 		{
 			// Break this module on purpose because it won't function like we want it to anyway.
-			while(1) { }
+			// The LED on the module will blink slowly (on for 2 seconds, off for 2 seconds).
+			while(1)
+			{
+				PRT2DR &= 0b11111110;
+				for(i = 0; i < 40000; i++)
+				{
+					xmitWait();
+				}
+				PRT2DR |= 0b00000001;
+				for(i = 0; i < 40000; i++)
+				{
+					xmitWait();
+				}
+			}
 		}
 	}
 	else
 	{
 		// Purposely break the module since it was unable to assign an ID correctly.
-		while(1) { }
+		// The LED on the module will blink at a moderate speed (0.5 seconds on, 0.5 seconds off).
+		while(1)
+		{
+			PRT2DR &= 0b11111110;
+			for(i = 0; i < 10000; i++)
+			{
+				xmitWait();
+			}
+			PRT2DR |= 0b00000001;
+			for(i = 0; i < 10000; i++)
+			{
+				xmitWait();
+			}
+		}
 	}
 	
 	// Wait for the other controllers to find their servos.

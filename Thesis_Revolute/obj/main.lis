@@ -8,7 +8,7 @@
  0000                   .dbline -1
  0000                   .dbline 158
  0000           ; // Author: Jason Tennyson
- 0000           ; // Date: 3-18-11
+ 0000           ; // Date: 3-21-11
  0000           ; // File: main.c
  0000           ; //
  0000           ; // This is the design for the revolute modules for Jason Tennyson's Thesis.
@@ -106,13 +106,13 @@
  0000           ; 
  0000           ; // This is the number of attempts we make to contact the servo per sweep of attempts before
  0000           ; // writing to its EEPROM in an attempt to alter settings that keep us from communicating.
- 0000           ; #define               SERVO_COMM_ATTEMPTS                     (10)
+ 0000           ; #define               SERVO_COMM_ATTEMPTS                     (5)
  0000           ; // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
  0000           ; // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
  0000           ; // If we don't then do at least one more loop, the EEPROM write was done for no reason.
- 0000           ; #define               SERVO_COMM_LOOPS                        (2)
+ 0000           ; #define               SERVO_COMM_LOOPS                        (4)
  0000           ; // This is the number of timeout periods to wait through while the servo boots up (2 ms per period).
- 0000           ; #define               SERVO_BOOT_TIMEOUTS                     (75)
+ 0000           ; #define               SERVO_BOOT_TIMEOUTS                     (100)
  0000           ; 
  0000           ; // This function receives a mode identifier as a parameter and toggles the system configuration.
  0000           ; void configToggle(int mode);
@@ -206,7 +206,7 @@
  0032           ;       
  0032           ;       // We have to wait for the servo to power up and get ready for communications.
  0032           ;       servoBootWait();
- 0032 7C0FBB            xcall _servoBootWait
+ 0032 7C1089            xcall _servoBootWait
  0035                   .dbline 175
  0035           ;       
  0035           ;       // Find the servo that is inside of this module.
@@ -335,7 +335,7 @@
  00A6           ;       
  00A6           ;       // Make completely sure we're done.
  00A6           ;       xmitWait();
- 00A6 7C0F9C            xcall _xmitWait
+ 00A6 7C106A            xcall _xmitWait
  00A9                   .dbline 209
  00A9           ; 
  00A9           ;       configToggle(WAIT);                             // Switch back to wait mode.
@@ -2441,7 +2441,7 @@
  08CB 62D000            mov REG[0xd0],>_SERVO_ID
  08CE 5100              mov A,[_SERVO_ID]
  08D0 08                push A
- 08D1 95EB              xcall _servoInstruction
+ 08D1 96B9              xcall _servoInstruction
  08D3 38FB              add SP,-5
  08D5                   .dbline 826
  08D5           ;                                       
@@ -2464,7 +2464,7 @@
  08E4 08                push A
  08E5 50FE              mov A,-2
  08E7 08                push A
- 08E8 95D4              xcall _servoInstruction
+ 08E8 96A2              xcall _servoInstruction
  08EA 38FB              add SP,-5
  08EC 8043              xjmp L217
  08EE           L216:
@@ -2511,12 +2511,12 @@
  091A                   .dbline 845
  091A           ;                                                                                       // Set i such that the for loop is exited.
  091A           ;                                                                                       i = SERVO_COMM_ATTEMPTS;
- 091A 56060A            mov [X+6],10
+ 091A 560605            mov [X+6],5
  091D 560500            mov [X+5],0
  0920                   .dbline 847
  0920           ;                                                                                       // Set j such that we exit the outer loop as well.
  0920           ;                                                                                       j = SERVO_COMM_LOOPS;
- 0920 560802            mov [X+8],2
+ 0920 560804            mov [X+8],4
  0923 560700            mov [X+7],0
  0926                   .dbline 849
  0926           ;                                                                                       // Store the ID value.
@@ -2552,7 +2552,7 @@
  093F 0F0500            adc [X+5],0
  0942                   .dbline 826
  0942 5206              mov A,[X+6]
- 0944 110A              sub A,10
+ 0944 1105              sub A,5
  0946 5205              mov A,[X+5]
  0948 3180              xor A,-128
  094A 1980              sbb A,(0 ^ 0x80)
@@ -2566,7 +2566,7 @@
  0950 0F0700            adc [X+7],0
  0953                   .dbline 820
  0953 5208              mov A,[X+8]
- 0955 1102              sub A,2
+ 0955 1104              sub A,4
  0957 5207              mov A,[X+7]
  0959 3180              xor A,-128
  095B 1980              sbb A,(0 ^ 0x80)
@@ -2839,7 +2839,7 @@
  0A5E           ;       
  0A5E           ;       // Make completely sure we're done.
  0A5E           ;       xmitWait();
- 0A5E 953C              xcall _xmitWait
+ 0A5E 960A              xcall _xmitWait
  0A60                   .dbline 918
  0A60           ;       
  0A60           ;       configToggle(WAIT);                             // Switch back to wait for a master response.
@@ -3202,7 +3202,7 @@
  0BA2           ;       
  0BA2           ;       // Make completely sure we're done.
  0BA2           ;       xmitWait();
- 0BA2 93F8              xcall _xmitWait
+ 0BA2 94C6              xcall _xmitWait
  0BA4                   .dbline 1006
  0BA4           ;       
  0BA4           ;       configToggle(WAIT);                             // Switch back to wait for a master response.
@@ -3619,7 +3619,7 @@
  0D2A 08                push A
  0D2B 50FE              mov A,-2
  0D2D 08                push A
- 0D2E 918E              xcall _servoInstruction
+ 0D2E 925C              xcall _servoInstruction
  0D30 38FB              add SP,-5
  0D32                   .dbline 1123
  0D32           ;                       
@@ -3674,12 +3674,12 @@
  0D6D                   .dbline 1138
  0D6D           ;                                               // Set the index variable such that the for loop exits.
  0D6D           ;                                               i = SERVO_COMM_ATTEMPTS;
- 0D6D 56010A            mov [X+1],10
+ 0D6D 560105            mov [X+1],5
  0D70 560000            mov [X+0],0
  0D73                   .dbline 1140
  0D73           ;                                               // Set the outer index variable to 2 to not attempt again for no reason.
  0D73           ;                                               j = SERVO_COMM_LOOPS;
- 0D73 560302            mov [X+3],2
+ 0D73 560304            mov [X+3],4
  0D76 560200            mov [X+2],0
  0D79                   .dbline 1141
  0D79           ;                                       }
@@ -3718,7 +3718,7 @@
  0D93 0F0000            adc [X+0],0
  0D96                   .dbline 1118
  0D96 5201              mov A,[X+1]
- 0D98 110A              sub A,10
+ 0D98 1105              sub A,5
  0D9A 5200              mov A,[X+0]
  0D9C 3180              xor A,-128
  0D9E 1980              sbb A,(0 ^ 0x80)
@@ -3758,7 +3758,7 @@
  0DC3 08                push A
  0DC4 50FE              mov A,-2
  0DC6 08                push A
- 0DC7 90F5              xcall _servoInstruction
+ 0DC7 91C3              xcall _servoInstruction
  0DC9 38FB              add SP,-5
  0DCB                   .dbline 1161
  0DCB           ;               }
@@ -3771,7 +3771,7 @@
  0DCD 0F0200            adc [X+2],0
  0DD0                   .dbline 1115
  0DD0 5203              mov A,[X+3]
- 0DD2 1102              sub A,2
+ 0DD2 1104              sub A,4
  0DD4 5202              mov A,[X+2]
  0DD6 3180              xor A,-128
  0DD8 1980              sbb A,(0 ^ 0x80)
@@ -3790,7 +3790,7 @@
  0DE2           ;       if(SERVO_ID < BROADCAST)
  0DE2 62D000            mov REG[0xd0],>_SERVO_ID
  0DE5 3C00FE            cmp [_SERVO_ID],-2
- 0DE8 D0CD              jnc L342
+ 0DE8 D19B              jnc L350
  0DEA           X71:
  0DEA                   .dbline 1170
  0DEA           ;       {
@@ -3827,7 +3827,7 @@
  0E02 62D000            mov REG[0xd0],>_SERVO_ID
  0E05 5100              mov A,[_SERVO_ID]
  0E07 08                push A
- 0E08 90B4              xcall _servoInstruction
+ 0E08 9182              xcall _servoInstruction
  0E0A 38FB              add SP,-5
  0E0C 8048              xjmp L326
  0E0E           L325:
@@ -3878,12 +3878,12 @@
  0E3E                   .dbline 1199
  0E3E           ;                                                               // Set i so that we exit the for loop.
  0E3E           ;                                                               i = SERVO_COMM_ATTEMPTS;
- 0E3E 56010A            mov [X+1],10
+ 0E3E 560105            mov [X+1],5
  0E41 560000            mov [X+0],0
  0E44                   .dbline 1201
  0E44           ;                                                               // Set the outer loop's variable so that we don't loop again.
  0E44           ;                                                               j = SERVO_COMM_LOOPS;
- 0E44 560302            mov [X+3],2
+ 0E44 560304            mov [X+3],4
  0E47 560200            mov [X+2],0
  0E4A                   .dbline 1202
  0E4A           ;                                                       }
@@ -3925,7 +3925,7 @@
  0E64 0F0000            adc [X+0],0
  0E67                   .dbline 1178
  0E67 5201              mov A,[X+1]
- 0E69 110A              sub A,10
+ 0E69 1105              sub A,5
  0E6B 5200              mov A,[X+0]
  0E6D 3180              xor A,-128
  0E6F 1980              sbb A,(0 ^ 0x80)
@@ -3964,7 +3964,7 @@
  0E94 62D000            mov REG[0xd0],>_SERVO_ID
  0E97 5100              mov A,[_SERVO_ID]
  0E99 08                push A
- 0E9A 9022              xcall _servoInstruction
+ 0E9A 90F0              xcall _servoInstruction
  0E9C 38FB              add SP,-5
  0E9E                   .dbline 1221
  0E9E           ;                       }
@@ -3977,7 +3977,7 @@
  0EA0 0F0200            adc [X+2],0
  0EA3                   .dbline 1175
  0EA3 5203              mov A,[X+3]
- 0EA5 1102              sub A,2
+ 0EA5 1104              sub A,4
  0EA7 5202              mov A,[X+2]
  0EA9 3180              xor A,-128
  0EAB 1980              sbb A,(0 ^ 0x80)
@@ -3987,691 +3987,850 @@
  0EAF           ;               
  0EAF           ;               if(status_return_level != STATUS_RET_LEVEL)
  0EAF 3D0601            cmp [X+6],1
- 0EB2 A005              jz L316
+ 0EB2 A0D3              jz L316
  0EB4                   .dbline 1225
  0EB4           ;               {
- 0EB4           L338:
- 0EB4                   .dbline 1227
- 0EB4           ;                       // Break this module on purpose because it won't function like we want it to anyway.
- 0EB4           ;                       while(1) { }
- 0EB4                   .dbline 1227
- 0EB4           L339:
- 0EB4                   .dbline 1227
- 0EB4 8FFF              xjmp L338
- 0EB6           L341:
- 0EB6                   .dbline 1233
- 0EB6           ;               }
- 0EB6           ;       }
- 0EB6           ;       else
- 0EB6           ;       {
- 0EB6           ;               // Purposely break the module since it was unable to assign an ID correctly.
- 0EB6           ;               while(1) { }
- 0EB6                   .dbline 1233
- 0EB6           L342:
- 0EB6                   .dbline 1233
- 0EB6 8FFF              xjmp L341
- 0EB8           L316:
- 0EB8                   .dbline 1237
- 0EB8           ;       }
- 0EB8           ;       
- 0EB8           ;       // Wait for the other controllers to find their servos.
- 0EB8           ;       servoConfigWait();
- 0EB8 9155              xcall _servoConfigWait
- 0EBA                   .dbline -2
- 0EBA           L297:
- 0EBA 38F7              add SP,-9
- 0EBC 20                pop X
- 0EBD                   .dbline 0 ; func end
- 0EBD 7F                ret
- 0EBE                   .dbsym l flashWrite 7 I
- 0EBE                   .dbsym l status_return_level 6 c
- 0EBE                   .dbsym l total_attempts 4 I
- 0EBE                   .dbsym l j 2 I
- 0EBE                   .dbsym l i 0 I
- 0EBE                   .dbend
- 0EBE                   .dbfunc e servoInstruction _servoInstruction fV
- 0EBE           ;       checksum -> X+0
- 0EBE           ;          value -> X-8
- 0EBE           ;        address -> X-7
- 0EBE           ;    instruction -> X-6
- 0EBE           ;         length -> X-5
- 0EBE           ;             id -> X-4
- 0EBE           _servoInstruction::
- 0EBE                   .dbline -1
- 0EBE 10                push X
- 0EBF 4F                mov X,SP
- 0EC0 3801              add SP,1
- 0EC2                   .dbline 1243
- 0EC2           ; }
- 0EC2           ; 
- 0EC2           ; // This function receives a destination, command length, instruction type, address, and value.
- 0EC2           ; // With these parameters, the function sends a packet to the communication bus.
- 0EC2           ; void servoInstruction(char id, char length, char instruction, char address, char value)
- 0EC2           ; {
- 0EC2                   .dbline 1247
- 0EC2           ;       char checksum;
- 0EC2           ;       
- 0EC2           ;       // Toggle into transmit mode.
- 0EC2           ;       configToggle(SERVO_COMM);
- 0EC2 5000              mov A,0
- 0EC4 08                push A
- 0EC5 5009              mov A,9
- 0EC7 08                push A
- 0EC8 7C00B4            xcall _configToggle
- 0ECB 38FE              add SP,-2
- 0ECD                   .dbline 1250
- 0ECD           ;       
- 0ECD           ;       // Calculate the checksum value for our servo communication.
- 0ECD           ;       checksum = 255-((id + length + instruction + address + value)%256);
- 0ECD 62D000            mov REG[0xd0],>__r0
- 0ED0 52FB              mov A,[X-5]
- 0ED2 5300              mov [__r1],A
- 0ED4 550000            mov [__r0],0
- 0ED7 52FC              mov A,[X-4]
- 0ED9 0200              add A,[__r1]
- 0EDB 5300              mov [__r1],A
- 0EDD 5000              mov A,0
- 0EDF 0A00              adc A,[__r0]
- 0EE1 5300              mov [__r0],A
- 0EE3 52FA              mov A,[X-6]
- 0EE5 0400              add [__r1],A
- 0EE7 0E0000            adc [__r0],0
- 0EEA 52F9              mov A,[X-7]
- 0EEC 0400              add [__r1],A
- 0EEE 0E0000            adc [__r0],0
- 0EF1 52F8              mov A,[X-8]
- 0EF3 0400              add [__r1],A
- 0EF5 0E0000            adc [__r0],0
- 0EF8 5001              mov A,1
- 0EFA 08                push A
- 0EFB 5000              mov A,0
- 0EFD 08                push A
- 0EFE 5100              mov A,[__r0]
- 0F00 08                push A
- 0F01 5100              mov A,[__r1]
- 0F03 08                push A
- 0F04 7C0000            xcall __divmod_16X16_16
- 0F07 38FE              add SP,-2
- 0F09 18                pop A
- 0F0A 5300              mov [__r1],A
- 0F0C 18                pop A
- 0F0D 50FF              mov A,-1
- 0F0F 1200              sub A,[__r1]
- 0F11 5400              mov [X+0],A
- 0F13                   .dbline 1253
- 0F13           ;       
- 0F13           ;       // Talk to the servo.
- 0F13           ;       if(instruction == PING_SERVO)
- 0F13 3DFA01            cmp [X-6],1
- 0F16 B02D              jnz L345
- 0F18                   .dbline 1254
- 0F18           ;       {
- 0F18                   .dbline 1255
- 0F18           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte one
- 0F18 10                push X
- 0F19 50FF              mov A,-1
- 0F1B 7C0000            xcall _SERVO_TX_PutChar
- 0F1E 20                pop X
- 0F1F                   .dbline 1256
- 0F1F           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte two
- 0F1F 10                push X
- 0F20 50FF              mov A,-1
- 0F22 7C0000            xcall _SERVO_TX_PutChar
- 0F25 20                pop X
- 0F26                   .dbline 1257
- 0F26           ;               SERVO_TX_PutChar(id);                   // Servo ID
- 0F26 10                push X
- 0F27 52FC              mov A,[X-4]
- 0F29 7C0000            xcall _SERVO_TX_PutChar
- 0F2C 20                pop X
- 0F2D                   .dbline 1258
- 0F2D           ;               SERVO_TX_PutChar(length);               // The instruction length.
- 0F2D 10                push X
- 0F2E 52FB              mov A,[X-5]
- 0F30 7C0000            xcall _SERVO_TX_PutChar
- 0F33 20                pop X
- 0F34                   .dbline 1259
- 0F34           ;               SERVO_TX_PutChar(instruction);  // The instruction to carry out.
- 0F34 10                push X
- 0F35 52FA              mov A,[X-6]
- 0F37 7C0000            xcall _SERVO_TX_PutChar
- 0F3A 20                pop X
- 0F3B                   .dbline 1260
- 0F3B           ;               SERVO_TX_PutChar(checksum);             // This is the checksum.
- 0F3B 10                push X
- 0F3C 5200              mov A,[X+0]
- 0F3E 7C0000            xcall _SERVO_TX_PutChar
- 0F41 20                pop X
- 0F42                   .dbline 1261
- 0F42           ;       }
- 0F42 8039              xjmp L348
- 0F44           L345:
- 0F44                   .dbline 1263
- 0F44           ;       else
- 0F44           ;       {
- 0F44                   .dbline 1264
- 0F44           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte one
- 0F44 10                push X
- 0F45 50FF              mov A,-1
- 0F47 7C0000            xcall _SERVO_TX_PutChar
- 0F4A 20                pop X
- 0F4B                   .dbline 1265
- 0F4B           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte two
- 0F4B 10                push X
- 0F4C 50FF              mov A,-1
- 0F4E 7C0000            xcall _SERVO_TX_PutChar
- 0F51 20                pop X
- 0F52                   .dbline 1266
- 0F52           ;               SERVO_TX_PutChar(id);                   // Servo ID
- 0F52 10                push X
- 0F53 52FC              mov A,[X-4]
- 0F55 7C0000            xcall _SERVO_TX_PutChar
- 0F58 20                pop X
- 0F59                   .dbline 1267
- 0F59           ;               SERVO_TX_PutChar(length);               // The instruction length.
- 0F59 10                push X
- 0F5A 52FB              mov A,[X-5]
- 0F5C 7C0000            xcall _SERVO_TX_PutChar
- 0F5F 20                pop X
- 0F60                   .dbline 1268
- 0F60           ;               SERVO_TX_PutChar(instruction);  // The instruction to carry out.
- 0F60 10                push X
- 0F61 52FA              mov A,[X-6]
- 0F63 7C0000            xcall _SERVO_TX_PutChar
- 0F66 20                pop X
- 0F67                   .dbline 1269
- 0F67           ;               SERVO_TX_PutChar(address);              // The address to read/write from/to.
- 0F67 10                push X
- 0F68 52F9              mov A,[X-7]
- 0F6A 7C0000            xcall _SERVO_TX_PutChar
- 0F6D 20                pop X
- 0F6E                   .dbline 1270
- 0F6E           ;               SERVO_TX_PutChar(value);                // The value to write or number of bytes to read.
- 0F6E 10                push X
- 0F6F 52F8              mov A,[X-8]
- 0F71 7C0000            xcall _SERVO_TX_PutChar
- 0F74 20                pop X
- 0F75                   .dbline 1271
- 0F75           ;               SERVO_TX_PutChar(checksum);             // This is the checksum.
- 0F75 10                push X
- 0F76 5200              mov A,[X+0]
- 0F78 7C0000            xcall _SERVO_TX_PutChar
- 0F7B 20                pop X
- 0F7C                   .dbline 1272
- 0F7C           ;       }
- 0F7C           L347:
- 0F7C                   .dbline 1275
- 0F7C           ;       
- 0F7C           ;       // Wait for the transmission to finish.
- 0F7C           ;       while(!(SERVO_TX_bReadTxStatus() & SERVO_TX_TX_COMPLETE));
- 0F7C           L348:
- 0F7C                   .dbline 1275
- 0F7C 10                push X
- 0F7D 7C0000            xcall _SERVO_TX_bReadTxStatus
- 0F80 62D000            mov REG[0xd0],>__r0
- 0F83 20                pop X
- 0F84 5300              mov [__r0],A
- 0F86 470020            tst [__r0],32
- 0F89 AFF2              jz L347
- 0F8B                   .dbline 1278
- 0F8B           ;       
- 0F8B           ;       // Make completely sure we're done.
- 0F8B           ;       xmitWait();
- 0F8B 900F              xcall _xmitWait
- 0F8D                   .dbline 1281
- 0F8D           ;       
- 0F8D           ;       // Switch back to wait for a servo response.
- 0F8D           ;       configToggle(INITIALIZE);
- 0F8D 5000              mov A,0
- 0F8F 08                push A
- 0F90 5008              mov A,8
+ 0EB4 8095              xjmp L339
+ 0EB6           L338:
+ 0EB6                   .dbline 1229
+ 0EB6           ;                       // Break this module on purpose because it won't function like we want it to anyway.
+ 0EB6           ;                       // The LED on the module will blink slowly (on for 2 seconds, off for 2 seconds).
+ 0EB6           ;                       while(1)
+ 0EB6           ;                       {
+ 0EB6                   .dbline 1230
+ 0EB6           ;                               PRT2DR &= 0b11111110;
+ 0EB6 4108FE            and REG[0x8],-2
+ 0EB9                   .dbline 1231
+ 0EB9           ;                               for(i = 0; i < 40000; i++)
+ 0EB9 560100            mov [X+1],0
+ 0EBC 560000            mov [X+0],0
+ 0EBF 8008              xjmp L344
+ 0EC1           L341:
+ 0EC1                   .dbline 1232
+ 0EC1           ;                               {
+ 0EC1                   .dbline 1233
+ 0EC1           ;                                       xmitWait();
+ 0EC1 91A7              xcall _xmitWait
+ 0EC3                   .dbline 1234
+ 0EC3           ;                               }
+ 0EC3           L342:
+ 0EC3                   .dbline 1231
+ 0EC3 7701              inc [X+1]
+ 0EC5 0F0000            adc [X+0],0
+ 0EC8           L344:
+ 0EC8                   .dbline 1231
+ 0EC8 62D000            mov REG[0xd0],>__r0
+ 0ECB 5201              mov A,[X+1]
+ 0ECD 5300              mov [__r3],A
+ 0ECF 5200              mov A,[X+0]
+ 0ED1 5300              mov [__r2],A
+ 0ED3 470080            tst [__r2],-128
+ 0ED6 A009              jz X77
+ 0ED8 5500FF            mov [__r1],-1
+ 0EDB 5500FF            mov [__r0],-1
+ 0EDE 800A              jmp X78
+ 0EE0           X77:
+ 0EE0 62D000            mov REG[0xd0],>__r0
+ 0EE3 550000            mov [__r1],0
+ 0EE6 550000            mov [__r0],0
+ 0EE9           X78:
+ 0EE9 62D000            mov REG[0xd0],>__r0
+ 0EEC 5100              mov A,[__r3]
+ 0EEE 1140              sub A,64
+ 0EF0 5100              mov A,[__r2]
+ 0EF2 199C              sbb A,-100
+ 0EF4 5100              mov A,[__r1]
+ 0EF6 1900              sbb A,0
+ 0EF8 5100              mov A,[__r0]
+ 0EFA 3180              xor A,-128
+ 0EFC 1980              sbb A,(0 ^ 0x80)
+ 0EFE CFC2              jc L341
+ 0F00           X79:
+ 0F00                   .dbline 1235
+ 0F00           ;                               PRT2DR |= 0b00000001;
+ 0F00 430801            or REG[0x8],1
+ 0F03                   .dbline 1236
+ 0F03           ;                               for(i = 0; i < 40000; i++)
+ 0F03 560100            mov [X+1],0
+ 0F06 560000            mov [X+0],0
+ 0F09 8008              xjmp L348
+ 0F0B           L345:
+ 0F0B                   .dbline 1237
+ 0F0B           ;                               {
+ 0F0B                   .dbline 1238
+ 0F0B           ;                                       xmitWait();
+ 0F0B 915D              xcall _xmitWait
+ 0F0D                   .dbline 1239
+ 0F0D           ;                               }
+ 0F0D           L346:
+ 0F0D                   .dbline 1236
+ 0F0D 7701              inc [X+1]
+ 0F0F 0F0000            adc [X+0],0
+ 0F12           L348:
+ 0F12                   .dbline 1236
+ 0F12 62D000            mov REG[0xd0],>__r0
+ 0F15 5201              mov A,[X+1]
+ 0F17 5300              mov [__r3],A
+ 0F19 5200              mov A,[X+0]
+ 0F1B 5300              mov [__r2],A
+ 0F1D 470080            tst [__r2],-128
+ 0F20 A009              jz X80
+ 0F22 5500FF            mov [__r1],-1
+ 0F25 5500FF            mov [__r0],-1
+ 0F28 800A              jmp X81
+ 0F2A           X80:
+ 0F2A 62D000            mov REG[0xd0],>__r0
+ 0F2D 550000            mov [__r1],0
+ 0F30 550000            mov [__r0],0
+ 0F33           X81:
+ 0F33 62D000            mov REG[0xd0],>__r0
+ 0F36 5100              mov A,[__r3]
+ 0F38 1140              sub A,64
+ 0F3A 5100              mov A,[__r2]
+ 0F3C 199C              sbb A,-100
+ 0F3E 5100              mov A,[__r1]
+ 0F40 1900              sbb A,0
+ 0F42 5100              mov A,[__r0]
+ 0F44 3180              xor A,-128
+ 0F46 1980              sbb A,(0 ^ 0x80)
+ 0F48 CFC2              jc L345
+ 0F4A           X82:
+ 0F4A                   .dbline 1240
+ 0F4A           ;                       }
+ 0F4A           L339:
+ 0F4A                   .dbline 1228
+ 0F4A 8F6B              xjmp L338
+ 0F4C           L349:
+ 0F4C                   .dbline 1248
+ 0F4C           ;               }
+ 0F4C           ;       }
+ 0F4C           ;       else
+ 0F4C           ;       {
+ 0F4C           ;               // Purposely break the module since it was unable to assign an ID correctly.
+ 0F4C           ;               // The LED on the module will blink at a moderate speed (0.5 seconds on, 0.5 seconds off).
+ 0F4C           ;               while(1)
+ 0F4C           ;               {
+ 0F4C                   .dbline 1249
+ 0F4C           ;                       PRT2DR &= 0b11111110;
+ 0F4C 4108FE            and REG[0x8],-2
+ 0F4F                   .dbline 1250
+ 0F4F           ;                       for(i = 0; i < 10000; i++)
+ 0F4F 560100            mov [X+1],0
+ 0F52 560000            mov [X+0],0
+ 0F55           L352:
+ 0F55                   .dbline 1251
+ 0F55           ;                       {
+ 0F55                   .dbline 1252
+ 0F55           ;                               xmitWait();
+ 0F55 9113              xcall _xmitWait
+ 0F57                   .dbline 1253
+ 0F57           ;                       }
+ 0F57           L353:
+ 0F57                   .dbline 1250
+ 0F57 7701              inc [X+1]
+ 0F59 0F0000            adc [X+0],0
+ 0F5C                   .dbline 1250
+ 0F5C 5201              mov A,[X+1]
+ 0F5E 1110              sub A,16
+ 0F60 5200              mov A,[X+0]
+ 0F62 3180              xor A,-128
+ 0F64 19A7              sbb A,(39 ^ 0x80)
+ 0F66 CFEE              jc L352
+ 0F68           X83:
+ 0F68                   .dbline 1254
+ 0F68           ;                       PRT2DR |= 0b00000001;
+ 0F68 430801            or REG[0x8],1
+ 0F6B                   .dbline 1255
+ 0F6B           ;                       for(i = 0; i < 10000; i++)
+ 0F6B 560100            mov [X+1],0
+ 0F6E 560000            mov [X+0],0
+ 0F71           L356:
+ 0F71                   .dbline 1256
+ 0F71           ;                       {
+ 0F71                   .dbline 1257
+ 0F71           ;                               xmitWait();
+ 0F71 90F7              xcall _xmitWait
+ 0F73                   .dbline 1258
+ 0F73           ;                       }
+ 0F73           L357:
+ 0F73                   .dbline 1255
+ 0F73 7701              inc [X+1]
+ 0F75 0F0000            adc [X+0],0
+ 0F78                   .dbline 1255
+ 0F78 5201              mov A,[X+1]
+ 0F7A 1110              sub A,16
+ 0F7C 5200              mov A,[X+0]
+ 0F7E 3180              xor A,-128
+ 0F80 19A7              sbb A,(39 ^ 0x80)
+ 0F82 CFEE              jc L356
+ 0F84           X84:
+ 0F84                   .dbline 1259
+ 0F84           ;               }
+ 0F84           L350:
+ 0F84                   .dbline 1247
+ 0F84 8FC7              xjmp L349
+ 0F86           L316:
+ 0F86                   .dbline 1263
+ 0F86           ;       }
+ 0F86           ;       
+ 0F86           ;       // Wait for the other controllers to find their servos.
+ 0F86           ;       servoConfigWait();
+ 0F86 9155              xcall _servoConfigWait
+ 0F88                   .dbline -2
+ 0F88           L297:
+ 0F88 38F7              add SP,-9
+ 0F8A 20                pop X
+ 0F8B                   .dbline 0 ; func end
+ 0F8B 7F                ret
+ 0F8C                   .dbsym l flashWrite 7 I
+ 0F8C                   .dbsym l status_return_level 6 c
+ 0F8C                   .dbsym l total_attempts 4 I
+ 0F8C                   .dbsym l j 2 I
+ 0F8C                   .dbsym l i 0 I
+ 0F8C                   .dbend
+ 0F8C                   .dbfunc e servoInstruction _servoInstruction fV
+ 0F8C           ;       checksum -> X+0
+ 0F8C           ;          value -> X-8
+ 0F8C           ;        address -> X-7
+ 0F8C           ;    instruction -> X-6
+ 0F8C           ;         length -> X-5
+ 0F8C           ;             id -> X-4
+ 0F8C           _servoInstruction::
+ 0F8C                   .dbline -1
+ 0F8C 10                push X
+ 0F8D 4F                mov X,SP
+ 0F8E 3801              add SP,1
+ 0F90                   .dbline 1269
+ 0F90           ; }
+ 0F90           ; 
+ 0F90           ; // This function receives a destination, command length, instruction type, address, and value.
+ 0F90           ; // With these parameters, the function sends a packet to the communication bus.
+ 0F90           ; void servoInstruction(char id, char length, char instruction, char address, char value)
+ 0F90           ; {
+ 0F90                   .dbline 1273
+ 0F90           ;       char checksum;
+ 0F90           ;       
+ 0F90           ;       // Toggle into transmit mode.
+ 0F90           ;       configToggle(SERVO_COMM);
+ 0F90 5000              mov A,0
  0F92 08                push A
- 0F93 7C00B4            xcall _configToggle
- 0F96 38FE              add SP,-2
- 0F98                   .dbline -2
- 0F98           L344:
- 0F98 38FF              add SP,-1
- 0F9A 20                pop X
- 0F9B                   .dbline 0 ; func end
- 0F9B 7F                ret
- 0F9C                   .dbsym l checksum 0 c
- 0F9C                   .dbsym l value -8 c
- 0F9C                   .dbsym l address -7 c
- 0F9C                   .dbsym l instruction -6 c
- 0F9C                   .dbsym l length -5 c
- 0F9C                   .dbsym l id -4 c
- 0F9C                   .dbend
- 0F9C                   .dbfunc e xmitWait _xmitWait fV
- 0F9C           ;              i -> X+0
- 0F9C           _xmitWait::
- 0F9C                   .dbline -1
- 0F9C 10                push X
- 0F9D 4F                mov X,SP
- 0F9E 3802              add SP,2
- 0FA0                   .dbline 1287
- 0FA0           ; }
- 0FA0           ; 
- 0FA0           ; // This function is used in various ways to create a period of nothingness. Mostly,
- 0FA0           ; // it is used to allow the controller enough time to transmit bytes (as its name suggests).
- 0FA0           ; void xmitWait(void)
- 0FA0           ; {
- 0FA0                   .dbline 1290
- 0FA0           ;       int i;
- 0FA0           ;       
- 0FA0           ;       for(i = 0; i < 25; i++)
- 0FA0 560100            mov [X+1],0
- 0FA3 560000            mov [X+0],0
- 0FA6           L351:
- 0FA6                   .dbline 1291
- 0FA6           ;       {
- 0FA6                   .dbline 1293
- 0FA6           ;               // Does nothing and wastes approximately 50 microseconds.
- 0FA6           ;       }
- 0FA6           L352:
- 0FA6                   .dbline 1290
- 0FA6 7701              inc [X+1]
- 0FA8 0F0000            adc [X+0],0
- 0FAB                   .dbline 1290
- 0FAB 5201              mov A,[X+1]
- 0FAD 1119              sub A,25
- 0FAF 5200              mov A,[X+0]
- 0FB1 3180              xor A,-128
- 0FB3 1980              sbb A,(0 ^ 0x80)
- 0FB5 CFF0              jc L351
- 0FB7           X77:
- 0FB7                   .dbline -2
- 0FB7           L350:
- 0FB7 38FE              add SP,-2
- 0FB9 20                pop X
- 0FBA                   .dbline 0 ; func end
- 0FBA 7F                ret
- 0FBB                   .dbsym l i 0 I
- 0FBB                   .dbend
- 0FBB                   .dbfunc e servoBootWait _servoBootWait fV
- 0FBB           ;              i -> X+0
- 0FBB           _servoBootWait::
- 0FBB                   .dbline -1
- 0FBB 10                push X
- 0FBC 4F                mov X,SP
- 0FBD 3802              add SP,2
- 0FBF                   .dbline 1301
- 0FBF           ; }
- 0FBF           ; 
- 0FBF           ; // This function wastes time while the servo that is attached to this controller boots up.
- 0FBF           ; // Once that happens, communications should happen quickly and reliably. The estimated boot
- 0FBF           ; // time in testing was approximately 120 ms. This means that the define SERVO_BOOT_TIMEOUTS
- 0FBF           ; // at the top must be a minimum of 60 since timeout periods are in 2 ms intervals.
- 0FBF           ; void servoBootWait(void)
- 0FBF           ; {
- 0FBF                   .dbline 1302
- 0FBF           ;       int i = 0;                                      // Index integer used for looping.
- 0FBF 560100            mov [X+1],0
- 0FC2 560000            mov [X+0],0
- 0FC5                   .dbline 1304
- 0FC5           ; 
- 0FC5           ;       configToggle(INITIALIZE);       // Switch to initialize mode to do this timeout routine.
- 0FC5 5000              mov A,0
- 0FC7 08                push A
- 0FC8 5008              mov A,8
- 0FCA 08                push A
- 0FCB 7C00B4            xcall _configToggle
- 0FCE 38FE              add SP,-2
- 0FD0                   .dbline 1307
- 0FD0           ;       
- 0FD0           ;       // Loop and wait for enough timeouts to happen before we talk to the servo.
- 0FD0           ;       for(i = 0; i < SERVO_BOOT_TIMEOUTS; i++)
- 0FD0 560100            mov [X+1],0
- 0FD3 560000            mov [X+0],0
- 0FD6                   .dbline 1308
- 0FD6           ;       {
- 0FD6           L360:
- 0FD6                   .dbline 1309
- 0FD6           ;               while(!TIMEOUT) { }             // Do nothing while we wait for one timeout period.
- 0FD6                   .dbline 1309
- 0FD6           L361:
- 0FD6                   .dbline 1309
- 0FD6 62D000            mov REG[0xd0],>_TIMEOUT
- 0FD9 3C0000            cmp [_TIMEOUT],0
- 0FDC B006              jnz X78
- 0FDE 3C0100            cmp [_TIMEOUT+1],0
- 0FE1 AFF4              jz L360
- 0FE3           X78:
- 0FE3                   .dbline 1310
- 0FE3           ;               TIMEOUT = 0;                    // Reset the timeout flag.
- 0FE3 62D000            mov REG[0xd0],>_TIMEOUT
- 0FE6 550100            mov [_TIMEOUT+1],0
- 0FE9 550000            mov [_TIMEOUT],0
- 0FEC                   .dbline 1311
- 0FEC           ;       }
- 0FEC           L357:
- 0FEC                   .dbline 1307
- 0FEC 7701              inc [X+1]
- 0FEE 0F0000            adc [X+0],0
- 0FF1                   .dbline 1307
- 0FF1 5201              mov A,[X+1]
- 0FF3 114B              sub A,75
- 0FF5 5200              mov A,[X+0]
- 0FF7 3180              xor A,-128
- 0FF9 1980              sbb A,(0 ^ 0x80)
- 0FFB CFDA              jc L361
- 0FFD           X79:
- 0FFD                   .dbline 1313
- 0FFD           ;       
- 0FFD           ;       INIT_TIMEOUT_Stop();            // Stop the timeout timer.
- 0FFD 10                push X
- 0FFE 7C0000            xcall _INIT_TIMEOUT_Stop
+ 0F93 5009              mov A,9
+ 0F95 08                push A
+ 0F96 7C00B4            xcall _configToggle
+ 0F99 38FE              add SP,-2
+ 0F9B                   .dbline 1276
+ 0F9B           ;       
+ 0F9B           ;       // Calculate the checksum value for our servo communication.
+ 0F9B           ;       checksum = 255-((id + length + instruction + address + value)%256);
+ 0F9B 62D000            mov REG[0xd0],>__r0
+ 0F9E 52FB              mov A,[X-5]
+ 0FA0 5300              mov [__r1],A
+ 0FA2 550000            mov [__r0],0
+ 0FA5 52FC              mov A,[X-4]
+ 0FA7 0200              add A,[__r1]
+ 0FA9 5300              mov [__r1],A
+ 0FAB 5000              mov A,0
+ 0FAD 0A00              adc A,[__r0]
+ 0FAF 5300              mov [__r0],A
+ 0FB1 52FA              mov A,[X-6]
+ 0FB3 0400              add [__r1],A
+ 0FB5 0E0000            adc [__r0],0
+ 0FB8 52F9              mov A,[X-7]
+ 0FBA 0400              add [__r1],A
+ 0FBC 0E0000            adc [__r0],0
+ 0FBF 52F8              mov A,[X-8]
+ 0FC1 0400              add [__r1],A
+ 0FC3 0E0000            adc [__r0],0
+ 0FC6 5001              mov A,1
+ 0FC8 08                push A
+ 0FC9 5000              mov A,0
+ 0FCB 08                push A
+ 0FCC 5100              mov A,[__r0]
+ 0FCE 08                push A
+ 0FCF 5100              mov A,[__r1]
+ 0FD1 08                push A
+ 0FD2 7C0000            xcall __divmod_16X16_16
+ 0FD5 38FE              add SP,-2
+ 0FD7 18                pop A
+ 0FD8 5300              mov [__r1],A
+ 0FDA 18                pop A
+ 0FDB 50FF              mov A,-1
+ 0FDD 1200              sub A,[__r1]
+ 0FDF 5400              mov [X+0],A
+ 0FE1                   .dbline 1279
+ 0FE1           ;       
+ 0FE1           ;       // Talk to the servo.
+ 0FE1           ;       if(instruction == PING_SERVO)
+ 0FE1 3DFA01            cmp [X-6],1
+ 0FE4 B02D              jnz L361
+ 0FE6                   .dbline 1280
+ 0FE6           ;       {
+ 0FE6                   .dbline 1281
+ 0FE6           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte one
+ 0FE6 10                push X
+ 0FE7 50FF              mov A,-1
+ 0FE9 7C0000            xcall _SERVO_TX_PutChar
+ 0FEC 20                pop X
+ 0FED                   .dbline 1282
+ 0FED           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte two
+ 0FED 10                push X
+ 0FEE 50FF              mov A,-1
+ 0FF0 7C0000            xcall _SERVO_TX_PutChar
+ 0FF3 20                pop X
+ 0FF4                   .dbline 1283
+ 0FF4           ;               SERVO_TX_PutChar(id);                   // Servo ID
+ 0FF4 10                push X
+ 0FF5 52FC              mov A,[X-4]
+ 0FF7 7C0000            xcall _SERVO_TX_PutChar
+ 0FFA 20                pop X
+ 0FFB                   .dbline 1284
+ 0FFB           ;               SERVO_TX_PutChar(length);               // The instruction length.
+ 0FFB 10                push X
+ 0FFC 52FB              mov A,[X-5]
+ 0FFE 7C0000            xcall _SERVO_TX_PutChar
  1001 20                pop X
- 1002                   .dbline 1314
- 1002           ;       TIMEOUT = 0;                            // Clear the timeout flag.
- 1002 62D000            mov REG[0xd0],>_TIMEOUT
- 1005 550100            mov [_TIMEOUT+1],0
- 1008 550000            mov [_TIMEOUT],0
- 100B                   .dbline -2
- 100B           L355:
- 100B 38FE              add SP,-2
- 100D 20                pop X
- 100E                   .dbline 0 ; func end
- 100E 7F                ret
- 100F                   .dbsym l i 0 I
- 100F                   .dbend
- 100F                   .dbfunc e servoConfigWait _servoConfigWait fV
- 100F           ;              i -> X+0
- 100F           _servoConfigWait::
- 100F                   .dbline -1
- 100F 10                push X
- 1010 4F                mov X,SP
- 1011 3802              add SP,2
- 1013                   .dbline 1320
- 1013           ; }
- 1013           ; 
- 1013           ; // Sits and spins for the amount of time it takes for a worst case scenario for setup time
- 1013           ; // to take place. This allows all other modules to initialize.
- 1013           ; void servoConfigWait(void)
- 1013           ; {
- 1013                   .dbline 1321
- 1013           ;       int i = 0;                                      // Index integer for looping purposes.
- 1013 560100            mov [X+1],0
- 1016 560000            mov [X+0],0
- 1019                   .dbline 1323
- 1019           ;       
- 1019           ;       configToggle(INITIALIZE);       // Switch to initialize mode to do this timeout routine.
- 1019 5000              mov A,0
- 101B 08                push A
- 101C 5008              mov A,8
- 101E 08                push A
- 101F 7C00B4            xcall _configToggle
- 1022 38FE              add SP,-2
- 1024                   .dbline 1328
- 1024           ;       
- 1024           ;       // For SERVO_COMM_ATTEMPTS*SERVO_COMM_LOOPS cycles, let the other controllers find
- 1024           ;       // their servos. The reason we loop this many times is to allow for a possible worst
- 1024           ;       // case scenario of setup time to complete.
- 1024           ;       for(i = 0; i < (SERVO_COMM_ATTEMPTS*SERVO_COMM_LOOPS); i++)
- 1024 560100            mov [X+1],0
- 1027 560000            mov [X+0],0
- 102A                   .dbline 1329
- 102A           ;       {
- 102A           L368:
- 102A                   .dbline 1330
- 102A           ;               while(!TIMEOUT) { }             // Do nothing while we wait for one timeout period.
- 102A                   .dbline 1330
- 102A           L369:
- 102A                   .dbline 1330
- 102A 62D000            mov REG[0xd0],>_TIMEOUT
- 102D 3C0000            cmp [_TIMEOUT],0
- 1030 B006              jnz X80
- 1032 3C0100            cmp [_TIMEOUT+1],0
- 1035 AFF4              jz L368
- 1037           X80:
- 1037                   .dbline 1331
- 1037           ;               TIMEOUT = 0;                    // Reset the timeout flag.
- 1037 62D000            mov REG[0xd0],>_TIMEOUT
- 103A 550100            mov [_TIMEOUT+1],0
- 103D 550000            mov [_TIMEOUT],0
- 1040                   .dbline 1332
- 1040           ;       }
- 1040           L365:
- 1040                   .dbline 1328
- 1040 7701              inc [X+1]
- 1042 0F0000            adc [X+0],0
- 1045                   .dbline 1328
- 1045 5201              mov A,[X+1]
- 1047 1114              sub A,20
- 1049 5200              mov A,[X+0]
- 104B 3180              xor A,-128
- 104D 1980              sbb A,(0 ^ 0x80)
- 104F CFDA              jc L369
- 1051           X81:
- 1051                   .dbline 1334
- 1051           ;       
- 1051           ;       INIT_TIMEOUT_Stop();            // Stop the timer.
- 1051 10                push X
- 1052 7C0000            xcall _INIT_TIMEOUT_Stop
- 1055 20                pop X
- 1056                   .dbline 1335
- 1056           ;       TIMEOUT = 0;                            // Reset the timeout flag.
- 1056 62D000            mov REG[0xd0],>_TIMEOUT
- 1059 550100            mov [_TIMEOUT+1],0
- 105C 550000            mov [_TIMEOUT],0
- 105F                   .dbline 1337
- 105F           ; 
- 105F           ;       configToggle(WAIT);                     // Switch to wait for the master node to speak to you.
- 105F 5000              mov A,0
- 1061 08                push A
- 1062 5001              mov A,1
- 1064 08                push A
- 1065 7C00B4            xcall _configToggle
- 1068 38FE              add SP,-2
- 106A                   .dbline -2
- 106A           L363:
- 106A 38FE              add SP,-2
- 106C 20                pop X
- 106D                   .dbline 0 ; func end
- 106D 7F                ret
- 106E                   .dbsym l i 0 I
- 106E                   .dbend
- 106E                   .dbfunc e TX_01234_TIMEOUT_ISR _TX_01234_TIMEOUT_ISR fV
- 106E           _TX_01234_TIMEOUT_ISR::
- 106E                   .dbline -1
- 106E 71C0              or F,-64
- 1070 08                push A
- 1071 5DD0              mov A,REG[0xd0]
- 1073 08                push A
- 1074                   .dbline 1345
- 1074           ; }
- 1074           ; 
- 1074           ; // This timeout ISR is for waiting before a transmission is made from this module.
- 1074           ; // This is to give all the other modules a chance to set up and clear their buffers.
- 1074           ; // It is currently set so that there is 1 ms of down time between the last transmission
- 1074           ; // and this module's transmission.
- 1074           ; void TX_01234_TIMEOUT_ISR(void)
- 1074           ; {
- 1074                   .dbline 1346
- 1074           ;       TIMEOUT = 1;    // Set the timeout flag.
- 1074 62D000            mov REG[0xd0],>_TIMEOUT
- 1077 550101            mov [_TIMEOUT+1],1
- 107A 550000            mov [_TIMEOUT],0
- 107D                   .dbline 1347
- 107D           ;       M8C_ClearIntFlag(INT_CLR0,TX_01234_TIMEOUT_INT_MASK);
- 107D 62DAFD            mov REG[0xda],-3
- 1080                   .dbline -2
- 1080           L371:
- 1080 18                pop A
- 1081 60D0              mov REG[208],A
- 1083 18                pop A
- 1084                   .dbline 0 ; func end
- 1084 7E                reti
- 1085                   .dbend
- 1085                   .dbfunc e HELLO_TIMEOUT_ISR _HELLO_TIMEOUT_ISR fV
- 1085           _HELLO_TIMEOUT_ISR::
- 1085                   .dbline -1
- 1085 71C0              or F,-64
- 1087 08                push A
- 1088 5DD0              mov A,REG[0xd0]
- 108A 08                push A
- 108B                   .dbline 1352
- 108B           ; }
- 108B           ; 
- 108B           ; // This is the ISR for a hello response timeout.
- 108B           ; void HELLO_TIMEOUT_ISR(void)
- 108B           ; {
- 108B                   .dbline 1353
- 108B           ;       TIMEOUT = 1;    // Set the timeout flag.
- 108B 62D000            mov REG[0xd0],>_TIMEOUT
- 108E 550101            mov [_TIMEOUT+1],1
- 1091 550000            mov [_TIMEOUT],0
- 1094                   .dbline 1354
- 1094           ;       M8C_ClearIntFlag(INT_CLR0,HELLO_TIMEOUT_INT_MASK);
- 1094 62DAFD            mov REG[0xda],-3
- 1097                   .dbline -2
- 1097           L372:
- 1097 18                pop A
- 1098 60D0              mov REG[208],A
- 109A 18                pop A
- 109B                   .dbline 0 ; func end
- 109B 7E                reti
- 109C                   .dbend
- 109C                   .dbfunc e CHILD_1_TIMEOUT_ISR _CHILD_1_TIMEOUT_ISR fV
- 109C           _CHILD_1_TIMEOUT_ISR::
- 109C                   .dbline -1
- 109C 71C0              or F,-64
- 109E 08                push A
- 109F 5DD0              mov A,REG[0xd0]
- 10A1 08                push A
- 10A2                   .dbline 1359
- 10A2           ; }
- 10A2           ; 
- 10A2           ; // These remaining ISRs are for all the child timeout scenarios.
- 10A2           ; void CHILD_1_TIMEOUT_ISR(void)
- 10A2           ; {
- 10A2                   .dbline 1360
- 10A2           ;       TIMEOUT = 1;    // Set the timeout flag.
- 10A2 62D000            mov REG[0xd0],>_TIMEOUT
- 10A5 550101            mov [_TIMEOUT+1],1
- 10A8 550000            mov [_TIMEOUT],0
- 10AB                   .dbline 1361
- 10AB           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_1_TIMEOUT_INT_MASK);
- 10AB 62DAFD            mov REG[0xda],-3
- 10AE                   .dbline -2
- 10AE           L373:
- 10AE 18                pop A
- 10AF 60D0              mov REG[208],A
- 10B1 18                pop A
- 10B2                   .dbline 0 ; func end
- 10B2 7E                reti
- 10B3                   .dbend
- 10B3                   .dbfunc e CHILD_2_TIMEOUT_ISR _CHILD_2_TIMEOUT_ISR fV
- 10B3           _CHILD_2_TIMEOUT_ISR::
- 10B3                   .dbline -1
- 10B3 71C0              or F,-64
- 10B5 08                push A
- 10B6 5DD0              mov A,REG[0xd0]
- 10B8 08                push A
- 10B9                   .dbline 1365
- 10B9           ; }
- 10B9           ; 
- 10B9           ; void CHILD_2_TIMEOUT_ISR(void)
- 10B9           ; {
- 10B9                   .dbline 1366
- 10B9           ;       TIMEOUT = 1;    // Set the timeout flag.
- 10B9 62D000            mov REG[0xd0],>_TIMEOUT
- 10BC 550101            mov [_TIMEOUT+1],1
- 10BF 550000            mov [_TIMEOUT],0
- 10C2                   .dbline 1367
- 10C2           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_2_TIMEOUT_INT_MASK);
- 10C2 62DAFD            mov REG[0xda],-3
- 10C5                   .dbline -2
- 10C5           L374:
- 10C5 18                pop A
- 10C6 60D0              mov REG[208],A
- 10C8 18                pop A
- 10C9                   .dbline 0 ; func end
- 10C9 7E                reti
- 10CA                   .dbend
- 10CA                   .dbfunc e CHILD_3_TIMEOUT_ISR _CHILD_3_TIMEOUT_ISR fV
- 10CA           _CHILD_3_TIMEOUT_ISR::
- 10CA                   .dbline -1
- 10CA 71C0              or F,-64
- 10CC 08                push A
- 10CD 5DD0              mov A,REG[0xd0]
- 10CF 08                push A
- 10D0                   .dbline 1371
- 10D0           ; }
- 10D0           ; 
- 10D0           ; void CHILD_3_TIMEOUT_ISR(void)
- 10D0           ; {
- 10D0                   .dbline 1372
- 10D0           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 1002                   .dbline 1285
+ 1002           ;               SERVO_TX_PutChar(instruction);  // The instruction to carry out.
+ 1002 10                push X
+ 1003 52FA              mov A,[X-6]
+ 1005 7C0000            xcall _SERVO_TX_PutChar
+ 1008 20                pop X
+ 1009                   .dbline 1286
+ 1009           ;               SERVO_TX_PutChar(checksum);             // This is the checksum.
+ 1009 10                push X
+ 100A 5200              mov A,[X+0]
+ 100C 7C0000            xcall _SERVO_TX_PutChar
+ 100F 20                pop X
+ 1010                   .dbline 1287
+ 1010           ;       }
+ 1010 8039              xjmp L364
+ 1012           L361:
+ 1012                   .dbline 1289
+ 1012           ;       else
+ 1012           ;       {
+ 1012                   .dbline 1290
+ 1012           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte one
+ 1012 10                push X
+ 1013 50FF              mov A,-1
+ 1015 7C0000            xcall _SERVO_TX_PutChar
+ 1018 20                pop X
+ 1019                   .dbline 1291
+ 1019           ;               SERVO_TX_PutChar(SERVO_START);  // Start byte two
+ 1019 10                push X
+ 101A 50FF              mov A,-1
+ 101C 7C0000            xcall _SERVO_TX_PutChar
+ 101F 20                pop X
+ 1020                   .dbline 1292
+ 1020           ;               SERVO_TX_PutChar(id);                   // Servo ID
+ 1020 10                push X
+ 1021 52FC              mov A,[X-4]
+ 1023 7C0000            xcall _SERVO_TX_PutChar
+ 1026 20                pop X
+ 1027                   .dbline 1293
+ 1027           ;               SERVO_TX_PutChar(length);               // The instruction length.
+ 1027 10                push X
+ 1028 52FB              mov A,[X-5]
+ 102A 7C0000            xcall _SERVO_TX_PutChar
+ 102D 20                pop X
+ 102E                   .dbline 1294
+ 102E           ;               SERVO_TX_PutChar(instruction);  // The instruction to carry out.
+ 102E 10                push X
+ 102F 52FA              mov A,[X-6]
+ 1031 7C0000            xcall _SERVO_TX_PutChar
+ 1034 20                pop X
+ 1035                   .dbline 1295
+ 1035           ;               SERVO_TX_PutChar(address);              // The address to read/write from/to.
+ 1035 10                push X
+ 1036 52F9              mov A,[X-7]
+ 1038 7C0000            xcall _SERVO_TX_PutChar
+ 103B 20                pop X
+ 103C                   .dbline 1296
+ 103C           ;               SERVO_TX_PutChar(value);                // The value to write or number of bytes to read.
+ 103C 10                push X
+ 103D 52F8              mov A,[X-8]
+ 103F 7C0000            xcall _SERVO_TX_PutChar
+ 1042 20                pop X
+ 1043                   .dbline 1297
+ 1043           ;               SERVO_TX_PutChar(checksum);             // This is the checksum.
+ 1043 10                push X
+ 1044 5200              mov A,[X+0]
+ 1046 7C0000            xcall _SERVO_TX_PutChar
+ 1049 20                pop X
+ 104A                   .dbline 1298
+ 104A           ;       }
+ 104A           L363:
+ 104A                   .dbline 1301
+ 104A           ;       
+ 104A           ;       // Wait for the transmission to finish.
+ 104A           ;       while(!(SERVO_TX_bReadTxStatus() & SERVO_TX_TX_COMPLETE));
+ 104A           L364:
+ 104A                   .dbline 1301
+ 104A 10                push X
+ 104B 7C0000            xcall _SERVO_TX_bReadTxStatus
+ 104E 62D000            mov REG[0xd0],>__r0
+ 1051 20                pop X
+ 1052 5300              mov [__r0],A
+ 1054 470020            tst [__r0],32
+ 1057 AFF2              jz L363
+ 1059                   .dbline 1304
+ 1059           ;       
+ 1059           ;       // Make completely sure we're done.
+ 1059           ;       xmitWait();
+ 1059 900F              xcall _xmitWait
+ 105B                   .dbline 1307
+ 105B           ;       
+ 105B           ;       // Switch back to wait for a servo response.
+ 105B           ;       configToggle(INITIALIZE);
+ 105B 5000              mov A,0
+ 105D 08                push A
+ 105E 5008              mov A,8
+ 1060 08                push A
+ 1061 7C00B4            xcall _configToggle
+ 1064 38FE              add SP,-2
+ 1066                   .dbline -2
+ 1066           L360:
+ 1066 38FF              add SP,-1
+ 1068 20                pop X
+ 1069                   .dbline 0 ; func end
+ 1069 7F                ret
+ 106A                   .dbsym l checksum 0 c
+ 106A                   .dbsym l value -8 c
+ 106A                   .dbsym l address -7 c
+ 106A                   .dbsym l instruction -6 c
+ 106A                   .dbsym l length -5 c
+ 106A                   .dbsym l id -4 c
+ 106A                   .dbend
+ 106A                   .dbfunc e xmitWait _xmitWait fV
+ 106A           ;              i -> X+0
+ 106A           _xmitWait::
+ 106A                   .dbline -1
+ 106A 10                push X
+ 106B 4F                mov X,SP
+ 106C 3802              add SP,2
+ 106E                   .dbline 1313
+ 106E           ; }
+ 106E           ; 
+ 106E           ; // This function is used in various ways to create a period of nothingness. Mostly,
+ 106E           ; // it is used to allow the controller enough time to transmit bytes (as its name suggests).
+ 106E           ; void xmitWait(void)
+ 106E           ; {
+ 106E                   .dbline 1316
+ 106E           ;       int i;
+ 106E           ;       
+ 106E           ;       for(i = 0; i < 25; i++)
+ 106E 560100            mov [X+1],0
+ 1071 560000            mov [X+0],0
+ 1074           L367:
+ 1074                   .dbline 1317
+ 1074           ;       {
+ 1074                   .dbline 1319
+ 1074           ;               // Does nothing and wastes approximately 50 microseconds.
+ 1074           ;       }
+ 1074           L368:
+ 1074                   .dbline 1316
+ 1074 7701              inc [X+1]
+ 1076 0F0000            adc [X+0],0
+ 1079                   .dbline 1316
+ 1079 5201              mov A,[X+1]
+ 107B 1119              sub A,25
+ 107D 5200              mov A,[X+0]
+ 107F 3180              xor A,-128
+ 1081 1980              sbb A,(0 ^ 0x80)
+ 1083 CFF0              jc L367
+ 1085           X85:
+ 1085                   .dbline -2
+ 1085           L366:
+ 1085 38FE              add SP,-2
+ 1087 20                pop X
+ 1088                   .dbline 0 ; func end
+ 1088 7F                ret
+ 1089                   .dbsym l i 0 I
+ 1089                   .dbend
+ 1089                   .dbfunc e servoBootWait _servoBootWait fV
+ 1089           ;              i -> X+0
+ 1089           _servoBootWait::
+ 1089                   .dbline -1
+ 1089 10                push X
+ 108A 4F                mov X,SP
+ 108B 3802              add SP,2
+ 108D                   .dbline 1327
+ 108D           ; }
+ 108D           ; 
+ 108D           ; // This function wastes time while the servo that is attached to this controller boots up.
+ 108D           ; // Once that happens, communications should happen quickly and reliably. The estimated boot
+ 108D           ; // time in testing was approximately 120 ms. This means that the define SERVO_BOOT_TIMEOUTS
+ 108D           ; // at the top must be a minimum of 60 since timeout periods are in 2 ms intervals.
+ 108D           ; void servoBootWait(void)
+ 108D           ; {
+ 108D                   .dbline 1328
+ 108D           ;       int i = 0;                                      // Index integer used for looping.
+ 108D 560100            mov [X+1],0
+ 1090 560000            mov [X+0],0
+ 1093                   .dbline 1330
+ 1093           ; 
+ 1093           ;       configToggle(INITIALIZE);       // Switch to initialize mode to do this timeout routine.
+ 1093 5000              mov A,0
+ 1095 08                push A
+ 1096 5008              mov A,8
+ 1098 08                push A
+ 1099 7C00B4            xcall _configToggle
+ 109C 38FE              add SP,-2
+ 109E                   .dbline 1333
+ 109E           ;       
+ 109E           ;       // Loop and wait for enough timeouts to happen before we talk to the servo.
+ 109E           ;       for(i = 0; i < SERVO_BOOT_TIMEOUTS; i++)
+ 109E 560100            mov [X+1],0
+ 10A1 560000            mov [X+0],0
+ 10A4                   .dbline 1334
+ 10A4           ;       {
+ 10A4           L376:
+ 10A4                   .dbline 1335
+ 10A4           ;               while(!TIMEOUT) { }             // Do nothing while we wait for one timeout period.
+ 10A4                   .dbline 1335
+ 10A4           L377:
+ 10A4                   .dbline 1335
+ 10A4 62D000            mov REG[0xd0],>_TIMEOUT
+ 10A7 3C0000            cmp [_TIMEOUT],0
+ 10AA B006              jnz X86
+ 10AC 3C0100            cmp [_TIMEOUT+1],0
+ 10AF AFF4              jz L376
+ 10B1           X86:
+ 10B1                   .dbline 1336
+ 10B1           ;               TIMEOUT = 0;                    // Reset the timeout flag.
+ 10B1 62D000            mov REG[0xd0],>_TIMEOUT
+ 10B4 550100            mov [_TIMEOUT+1],0
+ 10B7 550000            mov [_TIMEOUT],0
+ 10BA                   .dbline 1337
+ 10BA           ;       }
+ 10BA           L373:
+ 10BA                   .dbline 1333
+ 10BA 7701              inc [X+1]
+ 10BC 0F0000            adc [X+0],0
+ 10BF                   .dbline 1333
+ 10BF 5201              mov A,[X+1]
+ 10C1 1164              sub A,100
+ 10C3 5200              mov A,[X+0]
+ 10C5 3180              xor A,-128
+ 10C7 1980              sbb A,(0 ^ 0x80)
+ 10C9 CFDA              jc L377
+ 10CB           X87:
+ 10CB                   .dbline 1339
+ 10CB           ;       
+ 10CB           ;       INIT_TIMEOUT_Stop();            // Stop the timeout timer.
+ 10CB 10                push X
+ 10CC 7C0000            xcall _INIT_TIMEOUT_Stop
+ 10CF 20                pop X
+ 10D0                   .dbline 1340
+ 10D0           ;       TIMEOUT = 0;                            // Clear the timeout flag.
  10D0 62D000            mov REG[0xd0],>_TIMEOUT
- 10D3 550101            mov [_TIMEOUT+1],1
+ 10D3 550100            mov [_TIMEOUT+1],0
  10D6 550000            mov [_TIMEOUT],0
- 10D9                   .dbline 1373
- 10D9           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_3_TIMEOUT_INT_MASK);
- 10D9 62DAFD            mov REG[0xda],-3
- 10DC                   .dbline -2
- 10DC           L375:
- 10DC 18                pop A
- 10DD 60D0              mov REG[208],A
- 10DF 18                pop A
- 10E0                   .dbline 0 ; func end
- 10E0 7E                reti
- 10E1                   .dbend
- 10E1                   .dbfunc e CHILD_4_TIMEOUT_ISR _CHILD_4_TIMEOUT_ISR fV
- 10E1           _CHILD_4_TIMEOUT_ISR::
- 10E1                   .dbline -1
- 10E1 71C0              or F,-64
- 10E3 08                push A
- 10E4 5DD0              mov A,REG[0xd0]
- 10E6 08                push A
- 10E7                   .dbline 1377
- 10E7           ; }
- 10E7           ; 
- 10E7           ; void CHILD_4_TIMEOUT_ISR(void)
- 10E7           ; {
- 10E7                   .dbline 1378
- 10E7           ;       TIMEOUT = 1;    // Set the timeout flag.
- 10E7 62D000            mov REG[0xd0],>_TIMEOUT
- 10EA 550101            mov [_TIMEOUT+1],1
- 10ED 550000            mov [_TIMEOUT],0
- 10F0                   .dbline 1379
- 10F0           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_4_TIMEOUT_INT_MASK);
- 10F0 62DAFD            mov REG[0xda],-3
- 10F3                   .dbline -2
- 10F3           L376:
- 10F3 18                pop A
- 10F4 60D0              mov REG[208],A
- 10F6 18                pop A
- 10F7                   .dbline 0 ; func end
- 10F7 7E                reti
- 10F8                   .dbend
- 10F8                   .dbfunc e INIT_TIMEOUT_ISR _INIT_TIMEOUT_ISR fV
- 10F8           _INIT_TIMEOUT_ISR::
- 10F8                   .dbline -1
- 10F8 71C0              or F,-64
- 10FA 08                push A
- 10FB 5DD0              mov A,REG[0xd0]
- 10FD 08                push A
- 10FE                   .dbline 1383
- 10FE           ; }
- 10FE           ; 
- 10FE           ; void INIT_TIMEOUT_ISR(void)
- 10FE           ; {
- 10FE                   .dbline 1384
- 10FE           ;       TIMEOUT = 1;    // Set the timeout flag.
- 10FE 62D000            mov REG[0xd0],>_TIMEOUT
- 1101 550101            mov [_TIMEOUT+1],1
- 1104 550000            mov [_TIMEOUT],0
- 1107                   .dbline 1385
- 1107           ;       M8C_ClearIntFlag(INT_CLR0,INIT_TIMEOUT_INT_MASK);
- 1107 62DAFD            mov REG[0xda],-3
- 110A                   .dbline -2
- 110A           L377:
- 110A 18                pop A
- 110B 60D0              mov REG[208],A
- 110D 18                pop A
- 110E                   .dbline 0 ; func end
- 110E 7E                reti
- 110F                   .dbend
+ 10D9                   .dbline -2
+ 10D9           L371:
+ 10D9 38FE              add SP,-2
+ 10DB 20                pop X
+ 10DC                   .dbline 0 ; func end
+ 10DC 7F                ret
+ 10DD                   .dbsym l i 0 I
+ 10DD                   .dbend
+ 10DD                   .dbfunc e servoConfigWait _servoConfigWait fV
+ 10DD           ;              i -> X+0
+ 10DD           _servoConfigWait::
+ 10DD                   .dbline -1
+ 10DD 10                push X
+ 10DE 4F                mov X,SP
+ 10DF 3802              add SP,2
+ 10E1                   .dbline 1346
+ 10E1           ; }
+ 10E1           ; 
+ 10E1           ; // Sits and spins for the amount of time it takes for a worst case scenario for setup time
+ 10E1           ; // to take place. This allows all other modules to initialize.
+ 10E1           ; void servoConfigWait(void)
+ 10E1           ; {
+ 10E1                   .dbline 1347
+ 10E1           ;       int i = 0;                                      // Index integer for looping purposes.
+ 10E1 560100            mov [X+1],0
+ 10E4 560000            mov [X+0],0
+ 10E7                   .dbline 1349
+ 10E7           ;       
+ 10E7           ;       configToggle(INITIALIZE);       // Switch to initialize mode to do this timeout routine.
+ 10E7 5000              mov A,0
+ 10E9 08                push A
+ 10EA 5008              mov A,8
+ 10EC 08                push A
+ 10ED 7C00B4            xcall _configToggle
+ 10F0 38FE              add SP,-2
+ 10F2                   .dbline 1354
+ 10F2           ;       
+ 10F2           ;       // For SERVO_COMM_ATTEMPTS*SERVO_COMM_LOOPS cycles, let the other controllers find
+ 10F2           ;       // their servos. The reason we loop this many times is to allow for a possible worst
+ 10F2           ;       // case scenario of setup time to complete.
+ 10F2           ;       for(i = 0; i < (SERVO_COMM_ATTEMPTS*SERVO_COMM_LOOPS); i++)
+ 10F2 560100            mov [X+1],0
+ 10F5 560000            mov [X+0],0
+ 10F8                   .dbline 1355
+ 10F8           ;       {
+ 10F8           L384:
+ 10F8                   .dbline 1356
+ 10F8           ;               while(!TIMEOUT) { }             // Do nothing while we wait for one timeout period.
+ 10F8                   .dbline 1356
+ 10F8           L385:
+ 10F8                   .dbline 1356
+ 10F8 62D000            mov REG[0xd0],>_TIMEOUT
+ 10FB 3C0000            cmp [_TIMEOUT],0
+ 10FE B006              jnz X88
+ 1100 3C0100            cmp [_TIMEOUT+1],0
+ 1103 AFF4              jz L384
+ 1105           X88:
+ 1105                   .dbline 1357
+ 1105           ;               TIMEOUT = 0;                    // Reset the timeout flag.
+ 1105 62D000            mov REG[0xd0],>_TIMEOUT
+ 1108 550100            mov [_TIMEOUT+1],0
+ 110B 550000            mov [_TIMEOUT],0
+ 110E                   .dbline 1358
+ 110E           ;       }
+ 110E           L381:
+ 110E                   .dbline 1354
+ 110E 7701              inc [X+1]
+ 1110 0F0000            adc [X+0],0
+ 1113                   .dbline 1354
+ 1113 5201              mov A,[X+1]
+ 1115 1114              sub A,20
+ 1117 5200              mov A,[X+0]
+ 1119 3180              xor A,-128
+ 111B 1980              sbb A,(0 ^ 0x80)
+ 111D CFDA              jc L385
+ 111F           X89:
+ 111F                   .dbline 1360
+ 111F           ;       
+ 111F           ;       INIT_TIMEOUT_Stop();            // Stop the timer.
+ 111F 10                push X
+ 1120 7C0000            xcall _INIT_TIMEOUT_Stop
+ 1123 20                pop X
+ 1124                   .dbline 1361
+ 1124           ;       TIMEOUT = 0;                            // Reset the timeout flag.
+ 1124 62D000            mov REG[0xd0],>_TIMEOUT
+ 1127 550100            mov [_TIMEOUT+1],0
+ 112A 550000            mov [_TIMEOUT],0
+ 112D                   .dbline 1363
+ 112D           ; 
+ 112D           ;       configToggle(WAIT);                     // Switch to wait for the master node to speak to you.
+ 112D 5000              mov A,0
+ 112F 08                push A
+ 1130 5001              mov A,1
+ 1132 08                push A
+ 1133 7C00B4            xcall _configToggle
+ 1136 38FE              add SP,-2
+ 1138                   .dbline -2
+ 1138           L379:
+ 1138 38FE              add SP,-2
+ 113A 20                pop X
+ 113B                   .dbline 0 ; func end
+ 113B 7F                ret
+ 113C                   .dbsym l i 0 I
+ 113C                   .dbend
+ 113C                   .dbfunc e TX_01234_TIMEOUT_ISR _TX_01234_TIMEOUT_ISR fV
+ 113C           _TX_01234_TIMEOUT_ISR::
+ 113C                   .dbline -1
+ 113C 71C0              or F,-64
+ 113E 08                push A
+ 113F 5DD0              mov A,REG[0xd0]
+ 1141 08                push A
+ 1142                   .dbline 1371
+ 1142           ; }
+ 1142           ; 
+ 1142           ; // This timeout ISR is for waiting before a transmission is made from this module.
+ 1142           ; // This is to give all the other modules a chance to set up and clear their buffers.
+ 1142           ; // It is currently set so that there is 1 ms of down time between the last transmission
+ 1142           ; // and this module's transmission.
+ 1142           ; void TX_01234_TIMEOUT_ISR(void)
+ 1142           ; {
+ 1142                   .dbline 1372
+ 1142           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 1142 62D000            mov REG[0xd0],>_TIMEOUT
+ 1145 550101            mov [_TIMEOUT+1],1
+ 1148 550000            mov [_TIMEOUT],0
+ 114B                   .dbline 1373
+ 114B           ;       M8C_ClearIntFlag(INT_CLR0,TX_01234_TIMEOUT_INT_MASK);
+ 114B 62DAFD            mov REG[0xda],-3
+ 114E                   .dbline -2
+ 114E           L387:
+ 114E 18                pop A
+ 114F 60D0              mov REG[208],A
+ 1151 18                pop A
+ 1152                   .dbline 0 ; func end
+ 1152 7E                reti
+ 1153                   .dbend
+ 1153                   .dbfunc e HELLO_TIMEOUT_ISR _HELLO_TIMEOUT_ISR fV
+ 1153           _HELLO_TIMEOUT_ISR::
+ 1153                   .dbline -1
+ 1153 71C0              or F,-64
+ 1155 08                push A
+ 1156 5DD0              mov A,REG[0xd0]
+ 1158 08                push A
+ 1159                   .dbline 1378
+ 1159           ; }
+ 1159           ; 
+ 1159           ; // This is the ISR for a hello response timeout.
+ 1159           ; void HELLO_TIMEOUT_ISR(void)
+ 1159           ; {
+ 1159                   .dbline 1379
+ 1159           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 1159 62D000            mov REG[0xd0],>_TIMEOUT
+ 115C 550101            mov [_TIMEOUT+1],1
+ 115F 550000            mov [_TIMEOUT],0
+ 1162                   .dbline 1380
+ 1162           ;       M8C_ClearIntFlag(INT_CLR0,HELLO_TIMEOUT_INT_MASK);
+ 1162 62DAFD            mov REG[0xda],-3
+ 1165                   .dbline -2
+ 1165           L388:
+ 1165 18                pop A
+ 1166 60D0              mov REG[208],A
+ 1168 18                pop A
+ 1169                   .dbline 0 ; func end
+ 1169 7E                reti
+ 116A                   .dbend
+ 116A                   .dbfunc e CHILD_1_TIMEOUT_ISR _CHILD_1_TIMEOUT_ISR fV
+ 116A           _CHILD_1_TIMEOUT_ISR::
+ 116A                   .dbline -1
+ 116A 71C0              or F,-64
+ 116C 08                push A
+ 116D 5DD0              mov A,REG[0xd0]
+ 116F 08                push A
+ 1170                   .dbline 1385
+ 1170           ; }
+ 1170           ; 
+ 1170           ; // These remaining ISRs are for all the child timeout scenarios.
+ 1170           ; void CHILD_1_TIMEOUT_ISR(void)
+ 1170           ; {
+ 1170                   .dbline 1386
+ 1170           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 1170 62D000            mov REG[0xd0],>_TIMEOUT
+ 1173 550101            mov [_TIMEOUT+1],1
+ 1176 550000            mov [_TIMEOUT],0
+ 1179                   .dbline 1387
+ 1179           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_1_TIMEOUT_INT_MASK);
+ 1179 62DAFD            mov REG[0xda],-3
+ 117C                   .dbline -2
+ 117C           L389:
+ 117C 18                pop A
+ 117D 60D0              mov REG[208],A
+ 117F 18                pop A
+ 1180                   .dbline 0 ; func end
+ 1180 7E                reti
+ 1181                   .dbend
+ 1181                   .dbfunc e CHILD_2_TIMEOUT_ISR _CHILD_2_TIMEOUT_ISR fV
+ 1181           _CHILD_2_TIMEOUT_ISR::
+ 1181                   .dbline -1
+ 1181 71C0              or F,-64
+ 1183 08                push A
+ 1184 5DD0              mov A,REG[0xd0]
+ 1186 08                push A
+ 1187                   .dbline 1391
+ 1187           ; }
+ 1187           ; 
+ 1187           ; void CHILD_2_TIMEOUT_ISR(void)
+ 1187           ; {
+ 1187                   .dbline 1392
+ 1187           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 1187 62D000            mov REG[0xd0],>_TIMEOUT
+ 118A 550101            mov [_TIMEOUT+1],1
+ 118D 550000            mov [_TIMEOUT],0
+ 1190                   .dbline 1393
+ 1190           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_2_TIMEOUT_INT_MASK);
+ 1190 62DAFD            mov REG[0xda],-3
+ 1193                   .dbline -2
+ 1193           L390:
+ 1193 18                pop A
+ 1194 60D0              mov REG[208],A
+ 1196 18                pop A
+ 1197                   .dbline 0 ; func end
+ 1197 7E                reti
+ 1198                   .dbend
+ 1198                   .dbfunc e CHILD_3_TIMEOUT_ISR _CHILD_3_TIMEOUT_ISR fV
+ 1198           _CHILD_3_TIMEOUT_ISR::
+ 1198                   .dbline -1
+ 1198 71C0              or F,-64
+ 119A 08                push A
+ 119B 5DD0              mov A,REG[0xd0]
+ 119D 08                push A
+ 119E                   .dbline 1397
+ 119E           ; }
+ 119E           ; 
+ 119E           ; void CHILD_3_TIMEOUT_ISR(void)
+ 119E           ; {
+ 119E                   .dbline 1398
+ 119E           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 119E 62D000            mov REG[0xd0],>_TIMEOUT
+ 11A1 550101            mov [_TIMEOUT+1],1
+ 11A4 550000            mov [_TIMEOUT],0
+ 11A7                   .dbline 1399
+ 11A7           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_3_TIMEOUT_INT_MASK);
+ 11A7 62DAFD            mov REG[0xda],-3
+ 11AA                   .dbline -2
+ 11AA           L391:
+ 11AA 18                pop A
+ 11AB 60D0              mov REG[208],A
+ 11AD 18                pop A
+ 11AE                   .dbline 0 ; func end
+ 11AE 7E                reti
+ 11AF                   .dbend
+ 11AF                   .dbfunc e CHILD_4_TIMEOUT_ISR _CHILD_4_TIMEOUT_ISR fV
+ 11AF           _CHILD_4_TIMEOUT_ISR::
+ 11AF                   .dbline -1
+ 11AF 71C0              or F,-64
+ 11B1 08                push A
+ 11B2 5DD0              mov A,REG[0xd0]
+ 11B4 08                push A
+ 11B5                   .dbline 1403
+ 11B5           ; }
+ 11B5           ; 
+ 11B5           ; void CHILD_4_TIMEOUT_ISR(void)
+ 11B5           ; {
+ 11B5                   .dbline 1404
+ 11B5           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 11B5 62D000            mov REG[0xd0],>_TIMEOUT
+ 11B8 550101            mov [_TIMEOUT+1],1
+ 11BB 550000            mov [_TIMEOUT],0
+ 11BE                   .dbline 1405
+ 11BE           ;       M8C_ClearIntFlag(INT_CLR0,CHILD_4_TIMEOUT_INT_MASK);
+ 11BE 62DAFD            mov REG[0xda],-3
+ 11C1                   .dbline -2
+ 11C1           L392:
+ 11C1 18                pop A
+ 11C2 60D0              mov REG[208],A
+ 11C4 18                pop A
+ 11C5                   .dbline 0 ; func end
+ 11C5 7E                reti
+ 11C6                   .dbend
+ 11C6                   .dbfunc e INIT_TIMEOUT_ISR _INIT_TIMEOUT_ISR fV
+ 11C6           _INIT_TIMEOUT_ISR::
+ 11C6                   .dbline -1
+ 11C6 71C0              or F,-64
+ 11C8 08                push A
+ 11C9 5DD0              mov A,REG[0xd0]
+ 11CB 08                push A
+ 11CC                   .dbline 1409
+ 11CC           ; }
+ 11CC           ; 
+ 11CC           ; void INIT_TIMEOUT_ISR(void)
+ 11CC           ; {
+ 11CC                   .dbline 1410
+ 11CC           ;       TIMEOUT = 1;    // Set the timeout flag.
+ 11CC 62D000            mov REG[0xd0],>_TIMEOUT
+ 11CF 550101            mov [_TIMEOUT+1],1
+ 11D2 550000            mov [_TIMEOUT],0
+ 11D5                   .dbline 1411
+ 11D5           ;       M8C_ClearIntFlag(INT_CLR0,INIT_TIMEOUT_INT_MASK);
+ 11D5 62DAFD            mov REG[0xda],-3
+ 11D8                   .dbline -2
+ 11D8           L393:
+ 11D8 18                pop A
+ 11D9 60D0              mov REG[208],A
+ 11DB 18                pop A
+ 11DC                   .dbline 0 ; func end
+ 11DC 7E                reti
+ 11DD                   .dbend
                         .area data(ram, con, rel)
  0000                   .dbfile C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\main.c
  0000           _SERVO_ID::
