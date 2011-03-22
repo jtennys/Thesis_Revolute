@@ -101,7 +101,7 @@
 // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
 // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
 // If we don't then do at least one more loop, the EEPROM write was done for no reason.
-#define		SERVO_COMM_LOOPS			(4)
+#define		SERVO_COMM_LOOPS			(10)
 // This is the number of timeout periods to wait through while the servo boots up (2 ms per period).
 #define		SERVO_BOOT_TIMEOUTS			(100)
 
@@ -164,9 +164,9 @@ void main(void)
 	STATE = 0;				// There is no state yet.
 	ID = DEFAULT_ID;		// Set the ID of this controller to the default to start with.
 
-	M8C_EnableGInt;			// Turn on global interrupts for the transmission timeout timer.
-	
 	M8C_EnableIntMask(INT_MSK0,INT_MSK0_GPIO); // Activate GPIO ISR
+	
+	M8C_EnableGInt;			// Turn on global interrupts for the transmission timeout timer.
 	
 	// We have to wait for the servo to power up and get ready for communications.
 	servoBootWait();
@@ -490,28 +490,52 @@ int commandReady(void)
 	{
 		// Check all of the ports for a start byte. Only one port will produce one.
 		if(HELLO_1_cReadChar() == START_TRANSMIT)
-		{		
-			CHILD = PORT_1;
-			
-			return 1;
+		{
+			while(!TIMEOUT)
+			{
+				if(HELLO_1_cReadChar() == END_TRANSMIT)
+				{
+					CHILD = PORT_1;
+				
+					return 1;
+				}
+			}
 		}
 		else if(HELLO_2_cReadChar() == START_TRANSMIT)
-		{		
-			CHILD = PORT_2;
-			
-			return 1;
+		{
+			while(!TIMEOUT)
+			{
+				if(HELLO_2_cReadChar() == END_TRANSMIT)
+				{
+					CHILD = PORT_2;
+				
+					return 1;
+				}
+			}
 		}
 		else if(HELLO_3_cReadChar() == START_TRANSMIT)
 		{
-			CHILD = PORT_3;
-			
-			return 1;
+			while(!TIMEOUT)
+			{
+				if(HELLO_3_cReadChar() == END_TRANSMIT)
+				{
+					CHILD = PORT_3;
+				
+					return 1;
+				}
+			}
 		}
 		else if(HELLO_4_cReadChar() == START_TRANSMIT)
 		{
-			CHILD = PORT_4;
-			
-			return 1;
+			while(!TIMEOUT)
+			{
+				if(HELLO_4_cReadChar() == END_TRANSMIT)
+				{
+					CHILD = PORT_4;
+				
+					return 1;
+				}
+			}
 		}
 	}
 	else if(STATE == RESPONSE_1)

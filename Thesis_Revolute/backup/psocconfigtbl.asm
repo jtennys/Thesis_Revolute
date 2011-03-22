@@ -354,11 +354,11 @@ LoadConfigTBL_response1_Bank0:
 ;  Instance name CHILD_1_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_1_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_1_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, 00h		;CHILD_1_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		21h, e0h		;CHILD_1_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
 	db		22h, 00h		;CHILD_1_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
 ;       Instance name CHILD_1_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 04h		;CHILD_1_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;CHILD_1_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		25h, 01h		;CHILD_1_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
 	db		26h, 00h		;CHILD_1_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
 LoadConfigTBL_response1_Bank1:
@@ -366,19 +366,19 @@ LoadConfigTBL_response1_Bank1:
 ;       Instance name CHILD_1, Block Name RX8(DCC02)
 	db		2bh, 00h		;CHILD_1_(DCC02CR1)
 	db		28h, 05h		;CHILD_1_FUNC_REG     (DCC02FN)
-	db		29h, 00h		;CHILD_1_INPUT_REG    (DCC02IN)
-	db		2ah, 00h		;CHILD_1_OUTPUT_REG   (DCC02OU)
+	db		29h, d1h		;CHILD_1_INPUT_REG    (DCC02IN)
+	db		2ah, 84h		;CHILD_1_OUTPUT_REG   (DCC02OU)
 ;  Instance name CHILD_1_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_1_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_1_TIMEOUT_(DBC00CR1)
 	db		20h, 00h		;CHILD_1_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 00h		;CHILD_1_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 00h		;CHILD_1_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+	db		21h, 06h		;CHILD_1_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;CHILD_1_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
 ;       Instance name CHILD_1_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 00h		;CHILD_1_TIMEOUT_(DBC01CR1)
 	db		24h, 20h		;CHILD_1_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 30h		;CHILD_1_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 00h		;CHILD_1_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+	db		25h, 36h		;CHILD_1_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;CHILD_1_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
 UnloadConfigTBL_response1_Bank0:
 ;  Instance name CHILD_1, User Module RX8
@@ -425,11 +425,11 @@ LoadConfigTBL_response2_Bank0:
 ;  Instance name CHILD_2_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_2_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_2_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, 00h		;CHILD_2_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		21h, e0h		;CHILD_2_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
 	db		22h, 00h		;CHILD_2_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
 ;       Instance name CHILD_2_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 04h		;CHILD_2_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;CHILD_2_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		25h, 01h		;CHILD_2_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
 	db		26h, 00h		;CHILD_2_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
 LoadConfigTBL_response2_Bank1:
@@ -437,19 +437,19 @@ LoadConfigTBL_response2_Bank1:
 ;       Instance name CHILD_2, Block Name RX8(DCC02)
 	db		2bh, 00h		;CHILD_2_(DCC02CR1)
 	db		28h, 05h		;CHILD_2_FUNC_REG     (DCC02FN)
-	db		29h, 00h		;CHILD_2_INPUT_REG    (DCC02IN)
-	db		2ah, 00h		;CHILD_2_OUTPUT_REG   (DCC02OU)
+	db		29h, e1h		;CHILD_2_INPUT_REG    (DCC02IN)
+	db		2ah, 84h		;CHILD_2_OUTPUT_REG   (DCC02OU)
 ;  Instance name CHILD_2_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_2_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_2_TIMEOUT_(DBC00CR1)
 	db		20h, 00h		;CHILD_2_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 00h		;CHILD_2_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 00h		;CHILD_2_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+	db		21h, 06h		;CHILD_2_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;CHILD_2_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
 ;       Instance name CHILD_2_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 00h		;CHILD_2_TIMEOUT_(DBC01CR1)
 	db		24h, 20h		;CHILD_2_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 30h		;CHILD_2_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 00h		;CHILD_2_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+	db		25h, 36h		;CHILD_2_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;CHILD_2_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
 UnloadConfigTBL_response2_Bank0:
 ;  Instance name CHILD_2, User Module RX8
@@ -496,11 +496,11 @@ LoadConfigTBL_response3_Bank0:
 ;  Instance name CHILD_3_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_3_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_3_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, 00h		;CHILD_3_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		21h, e0h		;CHILD_3_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
 	db		22h, 00h		;CHILD_3_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
 ;       Instance name CHILD_3_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 04h		;CHILD_3_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;CHILD_3_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		25h, 01h		;CHILD_3_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
 	db		26h, 00h		;CHILD_3_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
 LoadConfigTBL_response3_Bank1:
@@ -508,19 +508,19 @@ LoadConfigTBL_response3_Bank1:
 ;       Instance name CHILD_3, Block Name RX8(DCC02)
 	db		2bh, 00h		;CHILD_3_(DCC02CR1)
 	db		28h, 05h		;CHILD_3_FUNC_REG     (DCC02FN)
-	db		29h, 00h		;CHILD_3_INPUT_REG    (DCC02IN)
-	db		2ah, 00h		;CHILD_3_OUTPUT_REG   (DCC02OU)
+	db		29h, f1h		;CHILD_3_INPUT_REG    (DCC02IN)
+	db		2ah, 84h		;CHILD_3_OUTPUT_REG   (DCC02OU)
 ;  Instance name CHILD_3_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_3_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_3_TIMEOUT_(DBC00CR1)
 	db		20h, 00h		;CHILD_3_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 00h		;CHILD_3_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 00h		;CHILD_3_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+	db		21h, 06h		;CHILD_3_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;CHILD_3_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
 ;       Instance name CHILD_3_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 00h		;CHILD_3_TIMEOUT_(DBC01CR1)
 	db		24h, 20h		;CHILD_3_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 30h		;CHILD_3_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 00h		;CHILD_3_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+	db		25h, 36h		;CHILD_3_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;CHILD_3_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
 UnloadConfigTBL_response3_Bank0:
 ;  Instance name CHILD_3, User Module RX8
@@ -567,11 +567,11 @@ LoadConfigTBL_response4_Bank0:
 ;  Instance name CHILD_4_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_4_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_4_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
-	db		21h, 00h		;CHILD_4_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+	db		21h, e0h		;CHILD_4_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
 	db		22h, 00h		;CHILD_4_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
 ;       Instance name CHILD_4_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 04h		;CHILD_4_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)
-	db		25h, 00h		;CHILD_4_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
+	db		25h, 01h		;CHILD_4_TIMEOUT_PERIOD_MSB_REG(DBC01DR1)
 	db		26h, 00h		;CHILD_4_TIMEOUT_COMPARE_MSB_REG(DBC01DR2)
 	db		ffh
 LoadConfigTBL_response4_Bank1:
@@ -579,19 +579,19 @@ LoadConfigTBL_response4_Bank1:
 ;       Instance name CHILD_4, Block Name RX8(DCC02)
 	db		2bh, 00h		;CHILD_4_(DCC02CR1)
 	db		28h, 05h		;CHILD_4_FUNC_REG     (DCC02FN)
-	db		29h, 00h		;CHILD_4_INPUT_REG    (DCC02IN)
-	db		2ah, 00h		;CHILD_4_OUTPUT_REG   (DCC02OU)
+	db		29h, c1h		;CHILD_4_INPUT_REG    (DCC02IN)
+	db		2ah, 84h		;CHILD_4_OUTPUT_REG   (DCC02OU)
 ;  Instance name CHILD_4_TIMEOUT, User Module Timer16
 ;       Instance name CHILD_4_TIMEOUT, Block Name TIMER16_LSB(DBC00)
 	db		23h, 00h		;CHILD_4_TIMEOUT_(DBC00CR1)
 	db		20h, 00h		;CHILD_4_TIMEOUT_FUNC_LSB_REG(DBC00FN)
-	db		21h, 00h		;CHILD_4_TIMEOUT_INPUT_LSB_REG(DBC00IN)
-	db		22h, 00h		;CHILD_4_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
+	db		21h, 06h		;CHILD_4_TIMEOUT_INPUT_LSB_REG(DBC00IN)
+	db		22h, 40h		;CHILD_4_TIMEOUT_OUTPUT_LSB_REG(DBC00OU)
 ;       Instance name CHILD_4_TIMEOUT, Block Name TIMER16_MSB(DBC01)
 	db		27h, 00h		;CHILD_4_TIMEOUT_(DBC01CR1)
 	db		24h, 20h		;CHILD_4_TIMEOUT_FUNC_MSB_REG(DBC01FN)
-	db		25h, 30h		;CHILD_4_TIMEOUT_INPUT_MSB_REG(DBC01IN)
-	db		26h, 00h		;CHILD_4_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
+	db		25h, 36h		;CHILD_4_TIMEOUT_INPUT_MSB_REG(DBC01IN)
+	db		26h, 40h		;CHILD_4_TIMEOUT_OUTPUT_MSB_REG(DBC01OU)
 	db		ffh
 UnloadConfigTBL_response4_Bank0:
 ;  Instance name CHILD_4, User Module RX8
@@ -640,9 +640,9 @@ LoadConfigTBL_servo_transmit_Bank1:
 ;  Instance name SERVO_TX, User Module TX8
 ;       Instance name SERVO_TX, Block Name TX8(DCC02)
 	db		2bh, 00h		;SERVO_TX_(DCC02CR1)
-	db		28h, 0dh		;SERVO_TX_FUNC_REG     (DCC02FN)
-	db		29h, 00h		;SERVO_TX_INPUT_REG    (DCC02IN)
-	db		2ah, 00h		;SERVO_TX_OUTPUT_REG   (DCC02OU)
+	db		28h, 1dh		;SERVO_TX_FUNC_REG     (DCC02FN)
+	db		29h, 01h		;SERVO_TX_INPUT_REG    (DCC02IN)
+	db		2ah, 84h		;SERVO_TX_OUTPUT_REG   (DCC02OU)
 	db		ffh
 UnloadConfigTBL_servo_transmit_Bank0:
 ;  Instance name SERVO_TX, User Module TX8
@@ -831,10 +831,10 @@ LoadConfigTBL_waiting_Ordered:
 	M8C_SetBank0
 	mov	reg[05h], 00h		; Port_1_IntEn register (PRT1IE)
 	M8C_SetBank1
-	mov	reg[08h], 00h		; Port_2_DriveMode_0 register (PRT2DM0)
-	mov	reg[09h], ffh		; Port_2_DriveMode_1 register (PRT2DM1)
+	mov	reg[08h], 01h		; Port_2_DriveMode_0 register (PRT2DM0)
+	mov	reg[09h], feh		; Port_2_DriveMode_1 register (PRT2DM1)
 	M8C_SetBank0
-	mov	reg[0bh], ffh		; Port_2_DriveMode_2 register (PRT2DM2)
+	mov	reg[0bh], feh		; Port_2_DriveMode_2 register (PRT2DM2)
 	mov	reg[0ah], 00h		; Port_2_GlobalSelect register (PRT2GS)
 	M8C_SetBank1
 	mov	reg[0ah], 00h		; Port_2_IntCtrl_0 register (PRT2IC0)

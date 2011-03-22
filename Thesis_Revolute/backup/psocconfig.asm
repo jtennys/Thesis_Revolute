@@ -685,15 +685,27 @@ _LoadConfig_response1:
  LoadConfig_response1:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
-; writing Row_0_LogicSelect_0 register
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h],  1h
+; writing Port_0_DriveMode_1 register
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h], 1eh
+; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
+	and		reg[ 3h], ~1ch
+	or		reg[ 3h], 1ch
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1ch
+; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  3h
 ; writing Row_0_LogicSelect_1 register
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  3h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
+	or		reg[b5h],  1h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 
@@ -770,11 +782,24 @@ _UnloadConfig_response1:
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  5h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
 	or		reg[b5h], 12h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 	or		reg[b6h], 11h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1ch
+	or		reg[ 2h], 1ch
+; writing Port_0_DriveMode_2 register
+	and		reg[ 3h], ~1ch
+; writing Port_0_DriveMode_1 register
+	M8C_SetBank1
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h],  1h
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h], 1eh
+	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+response1_ADDR_OFF], ~response1_BIT
@@ -807,15 +832,27 @@ _LoadConfig_response2:
  LoadConfig_response2:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
-; writing Row_0_LogicSelect_0 register
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h],  1h
+; writing Port_0_DriveMode_1 register
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h], 1eh
+; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
+	and		reg[ 3h], ~1ah
+	or		reg[ 3h], 1ah
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1ah
+; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  3h
 ; writing Row_0_LogicSelect_1 register
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  3h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
+	or		reg[b5h],  1h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 
@@ -892,11 +929,24 @@ _UnloadConfig_response2:
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  5h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
 	or		reg[b5h], 12h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 	or		reg[b6h], 11h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1ah
+	or		reg[ 2h], 1ah
+; writing Port_0_DriveMode_2 register
+	and		reg[ 3h], ~1ah
+; writing Port_0_DriveMode_1 register
+	M8C_SetBank1
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h],  1h
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h], 1eh
+	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+response2_ADDR_OFF], ~response2_BIT
@@ -929,15 +979,27 @@ _LoadConfig_response3:
  LoadConfig_response3:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
-; writing Row_0_LogicSelect_0 register
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h],  1h
+; writing Port_0_DriveMode_1 register
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h], 1eh
+; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
+	and		reg[ 3h], ~16h
+	or		reg[ 3h], 16h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~16h
+; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  3h
 ; writing Row_0_LogicSelect_1 register
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  3h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
+	or		reg[b5h],  1h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 
@@ -1014,11 +1076,24 @@ _UnloadConfig_response3:
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  5h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
 	or		reg[b5h], 12h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 	or		reg[b6h], 11h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~16h
+	or		reg[ 2h], 16h
+; writing Port_0_DriveMode_2 register
+	and		reg[ 3h], ~16h
+; writing Port_0_DriveMode_1 register
+	M8C_SetBank1
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h],  1h
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h], 1eh
+	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+response3_ADDR_OFF], ~response3_BIT
@@ -1051,15 +1126,30 @@ _LoadConfig_response4:
  LoadConfig_response4:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
-; writing Row_0_LogicSelect_0 register
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h],  1h
+; writing Port_0_DriveMode_1 register
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h], 1eh
+; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
+	and		reg[ 3h], ~ eh
+	or		reg[ 3h],  eh
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~ eh
+; writing Row_0_InputMux register
+	and		reg[b0h], ~ 3h
+	or		reg[b0h],  1h
+; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  3h
 ; writing Row_0_LogicSelect_1 register
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  3h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
+	or		reg[b5h],  1h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 
@@ -1129,6 +1219,8 @@ _UnloadConfig_response4:
     lcall   LoadConfig              ; Unload the bank 1 values
 
 	M8C_SetBank0
+; writing Row_0_InputMux register
+	and		reg[b0h], ~ 3h
 ; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  5h
@@ -1136,11 +1228,24 @@ _UnloadConfig_response4:
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  5h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
 	or		reg[b5h], 12h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 	or		reg[b6h], 11h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~ eh
+	or		reg[ 2h],  eh
+; writing Port_0_DriveMode_2 register
+	and		reg[ 3h], ~ eh
+; writing Port_0_DriveMode_1 register
+	M8C_SetBank1
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h],  1h
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h], 1eh
+	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+response4_ADDR_OFF], ~response4_BIT
@@ -1173,15 +1278,27 @@ _LoadConfig_servo_transmit:
  LoadConfig_servo_transmit:
     RAM_PROLOGUE RAM_USE_CLASS_4
 	M8C_SetBank1
-; writing Row_0_LogicSelect_0 register
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h],  1h
+; writing Port_0_DriveMode_1 register
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h], 1eh
+; writing Port_0_DriveMode_2 register
 	M8C_SetBank0
+	and		reg[ 3h], ~1eh
+	or		reg[ 3h], 1eh
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1eh
+; writing Row_0_LogicSelect_0 register
 	and		reg[b3h], ~ fh
 	or		reg[b3h],  3h
 ; writing Row_0_LogicSelect_1 register
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  3h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
+	or		reg[b5h],  1h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 
@@ -1258,11 +1375,24 @@ _UnloadConfig_servo_transmit:
 	and		reg[b4h], ~ fh
 	or		reg[b4h],  5h
 ; writing Row_0_OutputDrive_0 register
-	and		reg[b5h], ~12h
+	and		reg[b5h], ~13h
 	or		reg[b5h], 12h
 ; writing Row_0_OutputDrive_1 register
 	and		reg[b6h], ~11h
 	or		reg[b6h], 11h
+; writing Port_0_GlobalSelect register
+	and		reg[ 2h], ~1eh
+	or		reg[ 2h], 1eh
+; writing Port_0_DriveMode_2 register
+	and		reg[ 3h], ~1eh
+; writing Port_0_DriveMode_1 register
+	M8C_SetBank1
+	and		reg[ 1h], ~1fh
+	or		reg[ 1h],  1h
+; writing Port_0_DriveMode_0 register
+	and		reg[ 0h], ~1fh
+	or		reg[ 0h], 1eh
+	M8C_SetBank0
 ; clear config active bit
 	RAM_SETPAGE_CUR >ACTIVE_CONFIG_STATUS
 	and		[ACTIVE_CONFIG_STATUS+servo_transmit_ADDR_OFF], ~servo_transmit_BIT

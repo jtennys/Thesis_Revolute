@@ -8,6 +8,42 @@
  -Bresponse2_RAM   
  -Bresponse3_RAM   
  -Bresponse4_RAM   
+ -Bservo_transmit_RAM   
+ -Bwaiting_RAM   
+ -Bhello_RAM   
+ -Binitial_RAM   
+ -Bmy_response_RAM   
+ -Bresponse1_RAM   
+ -Bresponse2_RAM   
+ -Bresponse3_RAM   
+ -Bresponse4_RAM   
+ -Bservo_transmit_RAM   
+ -Bwaiting_RAM   
+ -Bhello_RAM   
+ -Binitial_RAM   
+ -Bmy_response_RAM   
+ -Bresponse1_RAM   
+ -Bresponse2_RAM   
+ -Bresponse3_RAM   
+ -Bresponse4_RAM   
+ -Bservo_transmit_RAM   
+ -Bwaiting_RAM   
+ -Bhello_RAM   
+ -Binitial_RAM   
+ -Bmy_response_RAM   
+ -Bresponse1_RAM   
+ -Bresponse2_RAM   
+ -Bresponse3_RAM   
+ -Bresponse4_RAM   
+ -Bservo_transmit_RAM   
+ -Bwaiting_RAM   
+ -Bhello_RAM   
+ -Binitial_RAM   
+ -Bmy_response_RAM   
+ -Bresponse1_RAM   
+ -Bresponse2_RAM   
+ -Bresponse3_RAM   
+ -Bresponse4_RAM   
  -Bservo_transmit_RAM 
  -o"output/Thesis_Revolute" 
  ./obj/main.o   

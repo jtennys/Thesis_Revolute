@@ -1850,10 +1850,10 @@
  03D5 70EF          and   F, ~FLAG_XIO_MASK
  03D7 620500            mov     reg[05h], 00h           ; Port_1_IntEn register (PRT1IE)
  03DA 7110          or    F, FLAG_XIO_MASK
- 03DC 620800            mov     reg[08h], 00h           ; Port_2_DriveMode_0 register (PRT2DM0)
- 03DF 6209FF            mov     reg[09h], ffh           ; Port_2_DriveMode_1 register (PRT2DM1)
+ 03DC 620801            mov     reg[08h], 01h           ; Port_2_DriveMode_0 register (PRT2DM0)
+ 03DF 6209FE            mov     reg[09h], feh           ; Port_2_DriveMode_1 register (PRT2DM1)
  03E2 70EF          and   F, ~FLAG_XIO_MASK
- 03E4 620BFF            mov     reg[0bh], ffh           ; Port_2_DriveMode_2 register (PRT2DM2)
+ 03E4 620BFE            mov     reg[0bh], feh           ; Port_2_DriveMode_2 register (PRT2DM2)
  03E7 620A00            mov     reg[0ah], 00h           ; Port_2_GlobalSelect register (PRT2GS)
  03EA 7110          or    F, FLAG_XIO_MASK
  03EC 620A00            mov     reg[0ah], 00h           ; Port_2_IntCtrl_0 register (PRT2IC0)
