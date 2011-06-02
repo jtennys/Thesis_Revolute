@@ -50,7 +50,7 @@
 #define		PORT_4						('4')
 
 // Module Type
-#define		TYPE						(1)
+#define		TYPE						('1')
 
 // These defines are used as transmission indicators for transmissions between PSoC controllers.
 #define		START_TRANSMIT				(252)	// Indicates the beginning of a transmission.
@@ -477,7 +477,8 @@ int commandReady(void)
 			// is, we have special duties.
 			COMMAND_TYPE = WAIT_RECV_cGetChar();
 			
-			// This basically waits for the rest of the command to pass through.
+			// This basically clears the rest of the command from the buffer
+			// and serves the dual purpose of allowing everybody time to hear it.
 			for(i = 0; i < (tempByte - 1); i++)
 			{
 				WAIT_RECV_cGetChar();
@@ -489,6 +490,7 @@ int commandReady(void)
 	else if(STATE == HELLO_MODE)
 	{
 		// Check all of the ports for a start byte. Only one port will produce one.
+		// Only non-blocking commands are used to avoid getting stuck listening downstream.
 		if(HELLO_1_cReadChar() == START_TRANSMIT)
 		{
 			while(!TIMEOUT)
@@ -540,7 +542,7 @@ int commandReady(void)
 	}
 	else if(STATE == RESPONSE_1)
 	{
-		if(tempByte = CHILD_1_cReadChar())
+		if(tempByte = CHILD_1_cReadChar())	// If we have a nonzero byte...
 		{
 			if(tempByte == SERVO_START)		// We have a servo response coming.
 			{
