@@ -8,10 +8,10 @@
  0000                   .dbline -1
  0000                   .dbline 158
  0000           ; // Author: Jason Tennyson
- 0000           ; // Date: 3-21-11
+ 0000           ; // Date: 7-10-11
  0000           ; // File: main.c
  0000           ; //
- 0000           ; // This is the design for the revolute modules for Jason Tennyson's Thesis.
+ 0000           ; // This is the design for the revolute modules of Jason Tennyson's Thesis.
  0000           ; // This design is made for a PSoC CY8C28433-24PVXI.
  0000           ; //
  0000           ; // Controller Packet Structure (each field is a byte)

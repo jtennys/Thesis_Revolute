@@ -14236,7 +14236,7 @@ FILE: C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\main.c
 2052: 62 D0 01 MOV   REG[208],1
 2055: 55 F1 00 MOV   [CONFIGURED+1],0
 2058: 55 F0 00 MOV   [CONFIGURED],0
-(0162) // Date: 3-21-11
+(0162) // Date: 7-10-11
 205B: 62 D0 01 MOV   REG[208],1
 205E: 55 F5 00 MOV   [TIMEOUT+1],0
 2061: 55 F4 00 MOV   [TIMEOUT],0
@@ -14247,7 +14247,7 @@ FILE: C:\Users\Admin\DOCUME~1\PSOCDE~1.0PR\THESIS~2\THESIS~1\main.c
 206A: 62 D0 01 MOV   REG[208],1
 206D: 55 F3 00 MOV   [STATE+1],0
 2070: 55 F2 00 MOV   [STATE],0
-(0165) // This is the design for the revolute modules for Jason Tennyson's Thesis.
+(0165) // This is the design for the revolute modules of Jason Tennyson's Thesis.
 2073: 62 D0 02 MOV   REG[208],2
 2076: 55 06 FB MOV   [ID],251
 (0166) // This design is made for a PSoC CY8C28433-24PVXI.

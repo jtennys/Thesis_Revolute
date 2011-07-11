@@ -1,8 +1,8 @@
 // Author: Jason Tennyson
-// Date: 3-21-11
+// Date: 7-10-11
 // File: main.c
 //
-// This is the design for the revolute modules for Jason Tennyson's Thesis.
+// This is the design for the revolute modules of Jason Tennyson's Thesis.
 // This design is made for a PSoC CY8C28433-24PVXI.
 //
 // Controller Packet Structure (each field is a byte)
