@@ -1,10 +1,10 @@
-flash 3427 SRAM   FF:
- <size at next line>   0
-  [size:] 1 bytes
-flash 342B SRAM  1F0:
- 00 6 bytes
-flash 342F SRAM  200:
+flash 334A SRAM   FE:
+ <size at next line>   0  0
+  [size:] 2 bytes
+flash 334F SRAM  1F0:
+ 00 5 bytes
+flash 3353 SRAM  1FF:
  00 7 bytes
-flash 3433 SRAM  208:
+flash 3357 SRAM  207:
  <size at next line>   0
   [size:] 1 bytes

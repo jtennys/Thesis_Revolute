@@ -1,5 +1,5 @@
-  ROM 81% full. 12951 bytes used (does not include absolute areas).
-  RAM 67% full. 521 bytes used (does not include stack usage).
+  ROM 79% full. 12730 bytes used (does not include absolute areas).
+  RAM 67% full. 520 bytes used (does not include stack usage).
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -799,7 +799,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-                            text   204C   13DB =   5083. bytes (rel,con,rom)
+                            text   204C   12FE =   4862. bytes (rel,con,rom)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -809,31 +809,31 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        2101  _configToggle
        230B  _commandReady
        28BA  _takeAction
-       2A8D  _pingResponse
-       2B4E  _unloadAllConfigs
-       2B6A  _unloadConfig
-       2BF3  _assignedID
-       2C92  _childListen
-       2CEA  _childResponse
-       2DD2  _servoFinder
-       3063  _servoInstruction
-       3141  _xmitWait
-       3160  _servoBootWait
-       31B4  _servoConfigWait
-       3213  _TX_01234_TIMEOUT_ISR
-       322A  _HELLO_TIMEOUT_ISR
-       3241  _CHILD_1_TIMEOUT_ISR
-       3258  _CHILD_2_TIMEOUT_ISR
-       326F  _CHILD_3_TIMEOUT_ISR
-       3286  _CHILD_4_TIMEOUT_ISR
-       329D  _INIT_TIMEOUT_ISR
-       32B4  Dispatch_INTERRUPT_10
-       3320  Dispatch_INTERRUPT_11
-       334A  Dispatch_INTERRUPT_9
-       33A0  __divmod_16X16_16
-       33EE  __i_div16_block_util
-       3427  __text_end
-       3439  __xidata_end
+       2A87  _pingResponse
+       2B48  _unloadAllConfigs
+       2B64  _unloadConfig
+       2BED  _assignedID
+       2C8C  _childListen
+       2CE4  _childResponse
+       2DCC  _servoFinder
+       2F86  _servoInstruction
+       3064  _xmitWait
+       3083  _servoBootWait
+       30D7  _servoConfigWait
+       3136  _TX_01234_TIMEOUT_ISR
+       314D  _HELLO_TIMEOUT_ISR
+       3164  _CHILD_1_TIMEOUT_ISR
+       317B  _CHILD_2_TIMEOUT_ISR
+       3192  _CHILD_3_TIMEOUT_ISR
+       31A9  _CHILD_4_TIMEOUT_ISR
+       31C0  _INIT_TIMEOUT_ISR
+       31D7  Dispatch_INTERRUPT_10
+       3243  Dispatch_INTERRUPT_11
+       326D  Dispatch_INTERRUPT_9
+       32C3  __divmod_16X16_16
+       3311  __i_div16_block_util
+       334A  __text_end
+       335D  __xidata_end
 
 Area                               Start  End    Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -1000,7 +1000,7 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-               virtual_registers   00F8   0007 =      7. bytes (rel,con,ram)
+               virtual_registers   00F8   0006 =      6. bytes (rel,con,ram)
 
        Addr  Global Symbol
       -----  --------------------------------
@@ -1008,9 +1008,8 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        00F9  __rY
        00FA  __rX
        00FB  __r3
-       00FC  __r2
-       00FD  __r1
-       00FE  __r0
+       00FC  __r1
+       00FD  __r0
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
@@ -1019,18 +1018,18 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
        Addr  Global Symbol
       -----  --------------------------------
        0000  __data_start
-       00FF  _CHILD
-       01F0  _CONFIGURED
-       01F2  _STATE
-       01F4  _TIMEOUT
-       0200  _COMMAND_ERROR
-       0201  _COMMAND_LENGTH
-       0202  _COMMAND_PARAM
-       0203  _COMMAND_TYPE
-       0204  _COMMAND_DESTINATION
-       0205  _COMMAND_SOURCE
-       0206  _ID
-       0208  _SERVO_ID
+       00FE  _CONFIGURED
+       01F0  _STATE
+       01F2  _TIMEOUT
+       01F4  _CHILD
+       01FF  _COMMAND_ERROR
+       0200  _COMMAND_LENGTH
+       0201  _COMMAND_PARAM
+       0202  _COMMAND_TYPE
+       0203  _COMMAND_DESTINATION
+       0204  _COMMAND_SOURCE
+       0205  _ID
+       0207  _SERVO_ID
 
 Files Linked      [ module(s) ]
 
@@ -1042,7 +1041,7 @@ Files Linked      [ module(s) ]
 [ hello_4.asm, hello_3int.asm, hello_3.asm, hello_2int.asm, hello_2.asm, hello_1int.asm, hello_1.asm ]
 [ child_4int.asm, child_4_timeout.asm, child_4.asm, child_3int.asm, child_3_timeout.asm, child_3.asm ]
 [ child_2int.asm, child_2_timeout.asm, child_2.asm, child_1int.asm, child_1_timeout.asm, child_1.asm ]
-[ rZ.asm, rY.asm, rX.asm, r3.asm, r2.asm, r1.asm, r0.asm, divmod_16x16_16_util.asm, i_div16_block_util.asm ]
+[ rZ.asm, rY.asm, rX.asm, r3.asm, r1.asm, r0.asm, divmod_16x16_16_util.asm, i_div16_block_util.asm ]
 
 
 User Base Address Definitions
@@ -1053,12 +1052,12 @@ SSCParmBlk:0x00F7.0x00FF
 InterruptRAM = 0x0
 virtual_registers = 0xf8
 waiting_RAM
-hello_RAM = 0x209
-initial_RAM = 0x209
-my_response_RAM = 0x209
-response1_RAM = 0x209
-response2_RAM = 0x209
-response3_RAM = 0x209
-response4_RAM = 0x209
+hello_RAM = 0x208
+initial_RAM = 0x208
+my_response_RAM = 0x208
+response1_RAM = 0x208
+response2_RAM = 0x208
+response3_RAM = 0x208
+response4_RAM = 0x208
 servo_transmit_RAM
 

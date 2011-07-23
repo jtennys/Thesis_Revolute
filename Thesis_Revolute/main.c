@@ -102,7 +102,7 @@
 // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
 // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
 // If we don't then do at least one more loop, the EEPROM write was done for no reason.
-#define		SERVO_COMM_LOOPS			(3)
+#define		SERVO_COMM_LOOPS			(2)
 // This is the number of timeout periods to wait through while the servo boots up (2 ms per period).
 #define		SERVO_BOOT_TIMEOUTS			(100)
 
@@ -786,11 +786,15 @@ void takeAction(void)
 	char tempByte = 0;					// A temporary byte storage variable.
 	int runningTotal = 0;				// A running total of bytes to check against a checksum.
 	
-	if(COMMAND_TYPE == CLEAR)			// The master wants to clear the arm.
+	if(COMMAND_TYPE == CLEAR)				// The master wants to clear the arm.
 	{
+		// Reset the discovered parameters.
 		ID = DEFAULT_ID;
 		CONFIGURED = 0;
 		CHILD = 0;
+		
+		// Find the servo again.
+		servoFinder();
 	}
 	else if(COMMAND_TYPE == HELLO_BYTE)		// The master is probing for new modules.
 	{
@@ -835,14 +839,10 @@ void takeAction(void)
 		{
 			if((COMMAND_PARAM > MASTER_ID) && (COMMAND_PARAM < DEFAULT_ID))
 			{
-				// Assign this module the ID that has been passed by the master.
-				ID = COMMAND_PARAM;
-				
-				// This module is now configured.
-				CONFIGURED = 1;
+				char tempID = COMMAND_PARAM;
 				
 				// If the servo ID doesn't match what we want, change it to match.
-				if(ID != SERVO_ID)
+				if(tempID != SERVO_ID)
 				{
 					// These are our index variables for communication attempt timeouts.
 					int i;
@@ -853,7 +853,7 @@ void takeAction(void)
 					for(j = 0; j < SERVO_COMM_LOOPS; j++)
 					{	
 						// Send a request to change the servo ID to match the controller ID.
-						servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, ID_ADDRESS, ID);
+						servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, ID_ADDRESS, tempID);
 					
 						// Try to read the servo's ID several times.
 						for(i = 0; i < SERVO_COMM_ATTEMPTS; i++)
@@ -870,7 +870,7 @@ void takeAction(void)
 									if(!COMMAND_ERROR)
 									{
 										// If we have a valid servo ID, exit the loop.
-										if(COMMAND_SOURCE == ID)
+										if(COMMAND_SOURCE == tempID)
 										{
 											// Set the timeout flag to exit the while loop.
 											TIMEOUT = 1;
@@ -879,7 +879,7 @@ void takeAction(void)
 											// Set j such that we exit the outer loop as well.
 											j = SERVO_COMM_LOOPS;
 											// Store the ID value.
-											SERVO_ID = ID;
+											SERVO_ID = tempID;
 										}
 									}
 								}
@@ -888,13 +888,19 @@ void takeAction(void)
 					}	
 				}
 				
-				if(ID != SERVO_ID)
+				if(tempID != SERVO_ID)
 				{
 					// Toggle back to normal wait mode.
 					configToggle(WAIT);
 				}
 				else
 				{
+					// Assign this module the ID that has been passed by the master.
+					ID = SERVO_ID;
+					
+					// This module is now configured.
+					CONFIGURED = 1;
+				
 					// Let the master node know that you got the ID assignment.
 					assignedID();
 				}
@@ -1247,43 +1253,6 @@ void servoFinder(void)
 				
 				// Try to force the return status to what we want.
 				servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, STATUS_RET_ADDRESS, STATUS_RET_LEVEL);
-			}
-		}
-		
-		if(status_return_level != STATUS_RET_LEVEL)
-		{
-			// Break this module on purpose because it won't function like we want it to anyway.
-			// The LED on the module will blink slowly (on for 2 seconds, off for 2 seconds).
-			while(1)
-			{
-				PRT2DR &= 0b11111110;
-				for(i = 0; i < 40000; i++)
-				{
-					xmitWait();
-				}
-				PRT2DR |= 0b00000001;
-				for(i = 0; i < 40000; i++)
-				{
-					xmitWait();
-				}
-			}
-		}
-	}
-	else
-	{
-		// Purposely break the module since it was unable to assign an ID correctly.
-		// The LED on the module will blink at a moderate speed (0.5 seconds on, 0.5 seconds off).
-		while(1)
-		{
-			PRT2DR &= 0b11111110;
-			for(i = 0; i < 10000; i++)
-			{
-				xmitWait();
-			}
-			PRT2DR |= 0b00000001;
-			for(i = 0; i < 10000; i++)
-			{
-				xmitWait();
 			}
 		}
 	}
