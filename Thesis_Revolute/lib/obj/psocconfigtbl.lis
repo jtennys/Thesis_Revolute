@@ -1275,7 +1275,7 @@
  00E2           ;  Instance name TX_01234_TIMEOUT, User Module Timer16
  00E2           ;       Instance name TX_01234_TIMEOUT, Block Name TIMER16_LSB(DBC00)
  00E2 2300              db              23h, 00h                ;TX_01234_TIMEOUT_CONTROL_LSB_REG(DBC00CR0)
- 00E4 21F0              db              21h, f0h                ;TX_01234_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
+ 00E4 2178              db              21h, 78h                ;TX_01234_TIMEOUT_PERIOD_LSB_REG(DBC00DR1)
  00E6 2200              db              22h, 00h                ;TX_01234_TIMEOUT_COMPARE_LSB_REG(DBC00DR2)
  00E8           ;       Instance name TX_01234_TIMEOUT, Block Name TIMER16_MSB(DBC01)
  00E8 2704              db              27h, 04h                ;TX_01234_TIMEOUT_CONTROL_MSB_REG(DBC01CR0)

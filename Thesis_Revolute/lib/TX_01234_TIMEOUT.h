@@ -70,7 +70,7 @@ extern WORD wTX_01234_TIMEOUT_CaptureCounter(void);         // Obsolete
 // Constants for TX_01234_TIMEOUT user defined values
 //--------------------------------------------------
 
-#define TX_01234_TIMEOUT_PERIOD                ( 0xf0 )
+#define TX_01234_TIMEOUT_PERIOD                ( 0x78 )
 #define TX_01234_TIMEOUT_COMPARE_VALUE         ( 0x0 )
 
 

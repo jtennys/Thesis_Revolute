@@ -27,7 +27,7 @@ TX_01234_TIMEOUT_INT_MASK:                 equ 0x02
 ; Constants for TX_01234_TIMEOUT user defined values
 ;--------------------------------------------------
 
-TX_01234_TIMEOUT_PERIOD:                   equ 0xf0
+TX_01234_TIMEOUT_PERIOD:                   equ 0x78
 TX_01234_TIMEOUT_COMPARE_VALUE:            equ 0x0
 
 

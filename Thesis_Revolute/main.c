@@ -59,6 +59,7 @@
 #define		ID_ASSIGNMENT				(201)	// Indicates an ID assignment from the master.
 #define		ID_ASSIGN_OK				(202)	// Indicates an ID assignment is complete.
 #define		PING						(203)	// Indicates a ping message to or from the master.
+#define		CLEAR						(204)	// Indicates the arm values are to be cleared.
 #define		MASTER_ID					(0)		// The master node's ID.
 #define		DEFAULT_ID					(251)	// The ID that all modules start with.
 #define		BROADCAST					(254)	// The broadcast ID for all controllers and servos.
@@ -97,11 +98,11 @@
 
 // This is the number of attempts we make to contact the servo per sweep of attempts before
 // writing to its EEPROM in an attempt to alter settings that keep us from communicating.
-#define		SERVO_COMM_ATTEMPTS			(5)
+#define		SERVO_COMM_ATTEMPTS			(10)
 // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
 // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
 // If we don't then do at least one more loop, the EEPROM write was done for no reason.
-#define		SERVO_COMM_LOOPS			(10)
+#define		SERVO_COMM_LOOPS			(3)
 // This is the number of timeout periods to wait through while the servo boots up (2 ms per period).
 #define		SERVO_BOOT_TIMEOUTS			(100)
 
@@ -785,7 +786,13 @@ void takeAction(void)
 	char tempByte = 0;					// A temporary byte storage variable.
 	int runningTotal = 0;				// A running total of bytes to check against a checksum.
 	
-	if(COMMAND_TYPE == HELLO_BYTE)		// The master is probing for new modules.
+	if(COMMAND_TYPE == CLEAR)			// The master wants to clear the arm.
+	{
+		ID = DEFAULT_ID;
+		CONFIGURED = 0;
+		CHILD = 0;
+	}
+	else if(COMMAND_TYPE == HELLO_BYTE)		// The master is probing for new modules.
 	{
 		if(!CONFIGURED)
 		{
@@ -1120,8 +1127,6 @@ void servoFinder(void)
 	int i = 0;
 	int j = 0;
 	
-	int total_attempts = 0;
-	
 	// Integer used as a flag so that EEPROM writes aren't done more than once.
 	int flashWrite = 0;
 	
@@ -1145,8 +1150,6 @@ void servoFinder(void)
 		{
 			// Send a ping out for any servo connected to me (will only be one).
 			servoInstruction(BROADCAST, PING_LENGTH, PING_SERVO, 0, 0);
-			
-			total_attempts++;
 			
 			// Wait for either a timeout or a valid servo ID (which will trigger a timeout).
 			while(!TIMEOUT)
