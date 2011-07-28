@@ -25,7 +25,7 @@ WAIT_RECV_INT_REG:          equ 0e1h
 WAIT_RECV_RXBUF_ENABLE:                     equ   1
 
 WAIT_RECV_RX_IGNORE_BELOW:                   equ  0h
-WAIT_RECV_RX_BUFFER_SIZE:                    equ  40h
+WAIT_RECV_RX_BUFFER_SIZE:                    equ  10h
 WAIT_RECV_CMD_TERM:                          equ  0h
 WAIT_RECV_DELIMITER:                         equ  0h
 

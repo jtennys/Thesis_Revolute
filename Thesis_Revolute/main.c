@@ -98,7 +98,7 @@
 
 // This is the number of attempts we make to contact the servo per sweep of attempts before
 // writing to its EEPROM in an attempt to alter settings that keep us from communicating.
-#define		SERVO_COMM_ATTEMPTS			(10)
+#define		SERVO_COMM_ATTEMPTS			(3)
 // This is the number of times we do a loop of SERVO_COMM_ATTEMPTS. We would like this to be at least 2.
 // This is because we do an EEPROM write after the first unsuccessful loop of SERVO_COMM_ATTEMPTS.
 // If we don't then do at least one more loop, the EEPROM write was done for no reason.
@@ -839,71 +839,20 @@ void takeAction(void)
 		{
 			if((COMMAND_PARAM > MASTER_ID) && (COMMAND_PARAM < DEFAULT_ID))
 			{
-				char tempID = COMMAND_PARAM;
+				// Assign this module the ID that has been passed by the master.
+				ID = COMMAND_PARAM;
 				
-				// If the servo ID doesn't match what we want, change it to match.
-				if(tempID != SERVO_ID)
-				{
-					// These are our index variables for communication attempt timeouts.
-					int i;
-					int j;
-					
-					//while(ID != SERVO_ID)
-					
-					for(j = 0; j < SERVO_COMM_LOOPS; j++)
-					{	
-						// Send a request to change the servo ID to match the controller ID.
-						servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, ID_ADDRESS, tempID);
-					
-						// Try to read the servo's ID several times.
-						for(i = 0; i < SERVO_COMM_ATTEMPTS; i++)
-						{
-							// Send a request for the servo ID, which is presumably now equal to ID.
-							servoInstruction(BROADCAST, PING_LENGTH, PING_SERVO, 0, 0);
-							
-							// Wait for either a timeout or an indication that we want to exit the loop.
-							while(!TIMEOUT)
-							{
-								// If we have a command to interpret, read it.
-								if(commandReady())
-								{
-									if(!COMMAND_ERROR)
-									{
-										// If we have a valid servo ID, exit the loop.
-										if(COMMAND_SOURCE == tempID)
-										{
-											// Set the timeout flag to exit the while loop.
-											TIMEOUT = 1;
-											// Set i such that the for loop is exited.
-											i = SERVO_COMM_ATTEMPTS;
-											// Set j such that we exit the outer loop as well.
-											j = SERVO_COMM_LOOPS;
-											// Store the ID value.
-											SERVO_ID = tempID;
-										}
-									}
-								}
-							}
-						}
-					}	
-				}
+				// This module is now configured.
+				CONFIGURED = 1;
+			
+				// Let the master node know that you got the ID assignment.
+				assignedID();
 				
-				if(tempID != SERVO_ID)
-				{
-					// Toggle back to normal wait mode.
-					configToggle(WAIT);
-				}
-				else
-				{
-					// Assign this module the ID that has been passed by the master.
-					ID = SERVO_ID;
-					
-					// This module is now configured.
-					CONFIGURED = 1;
+				// Send a request to change the servo ID to match the controller ID.
+				servoInstruction(SERVO_ID, WRITE_LENGTH, WRITE_SERVO, ID_ADDRESS, ID);
 				
-					// Let the master node know that you got the ID assignment.
-					assignedID();
-				}
+				// Get back into wait mode.
+				configToggle(WAIT);
 			}
 		}
 		else if(COMMAND_DESTINATION > ID)

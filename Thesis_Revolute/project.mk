@@ -25,4 +25,4 @@ LMM=1
 SYS_INC_CONTENTS:=SYSTEM_STACK_PAGE:_equ_3 SYSTEM_STACK_BASE_ADDR:_equ_0h SYSTEM_LARGE_MEMORY_MODEL:_equ_1 SYSTEM_SMALL_MEMORY_MODEL:_equ_0 IMAGECRAFT:_equ_1 HITECH:_equ_2 TOOLCHAIN:_equ_IMAGECRAFT 
 SYSTEM_TOOLS=1
 CSFLOW=
-CONFIG_NAMES=waiting hello initial my_response response1 response2 response3 response4 servo_transmit waiting hello initial my_response response1 response2 response3 response4 servo_transmit waiting hello initial my_response response1 response2 response3 response4 servo_transmit 
+CONFIG_NAMES=waiting hello initial my_response response1 response2 response3 response4 servo_transmit waiting hello initial my_response response1 response2 response3 response4 servo_transmit 
